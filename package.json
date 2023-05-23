@@ -1,4 +1,5 @@
 {
+  "private": true,
   "devDependencies": {
     "turbo": "^1.9.8"
   },

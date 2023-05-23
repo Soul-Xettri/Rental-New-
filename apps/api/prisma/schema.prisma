@@ -1,0 +1,144 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                Int                @id @default(autoincrement())
+  name              String
+  email             String             @unique
+  mobileNumber      String             @db.VarChar(10)
+  password          String
+  role              ROLE
+  hashRt            String?
+  password_reset    Boolean            @default(false)
+  disabled_by_admin Boolean            @default(false)
+  verified          Boolean            @default(false)
+  kyc               Kyc?
+  CurrentAddress    CurrentAddress?
+  PermanentAddress  PermanentAddress?
+  Notification      Notification[]
+  NotificationToken NotificationToken?
+  sender            Messages[]         @relation("sender")
+  receiver          Messages[]         @relation("receiver")
+
+  @@map("users")
+}
+
+model Kyc {
+  id                          Int             @id @default(autoincrement())
+  registeredName              String
+  gender                      GENDER
+  dob                         String
+  father_husbandName          String
+  grandFather_fatherInLawName String
+  spouseName                  String?
+  occupation                  String
+  panNumber                   String?
+  landLineNumber              String?
+  documentIssuedAddress       String
+  documentImage               documentImage[]
+  user                        User?           @relation(fields: [userId], references: [id])
+  userId                      Int?            @unique
+}
+
+model documentImage {
+  id                 Int    @id @default(autoincrement())
+  faceImage          String
+  frontDocumentImage String
+  backDocumentImage  String
+  Kyc                Kyc?   @relation(fields: [kycId], references: [id])
+  kycId              Int?
+}
+
+model PermanentAddress {
+  id               Int      @id @default(autoincrement())
+  province         PROVINCE
+  district         String
+  vdc_Municipality String
+  user             User?    @relation(fields: [userId], references: [id])
+  userId           Int?     @unique
+}
+
+model CurrentAddress {
+  id               Int      @id @default(autoincrement())
+  province         PROVINCE
+  district         String
+  vdc_Municipality String
+  user             User?    @relation(fields: [userId], references: [id])
+  userId           Int?     @unique
+}
+
+model Notification {
+  id          Int              @id @default(autoincrement())
+  title       String
+  description String
+  user        User             @relation(fields: [userId], references: [id])
+  userId      Int
+  createdAt   DateTime         @default(now())
+  type        NotificationType
+
+  @@index([userId])
+}
+
+model NotificationToken {
+  id     Int    @id @default(autoincrement())
+  token  String
+  user   User   @relation(fields: [userId], references: [id])
+  userId Int    @unique
+}
+
+model Messages {
+  id         Int         @id @default(autoincrement())
+  message    String
+  sender     User        @relation(name: "receiver", fields: [senderId], references: [id])
+  receiver   User        @relation(name: "sender", fields: [receiverId], references: [id])
+  senderId   Int
+  receiverId Int
+  createdAt  DateTime    @default(now())
+  type       MessageType @default(MESSAGE)
+
+  @@index([senderId])
+  @@index([receiverId])
+  @@map("messages")
+}
+
+enum NotificationType {
+  APPOINTMENT
+  KYC
+  MESSAGE
+}
+
+enum MessageType {
+  MESSAGE
+  APPOINTMENT
+}
+
+enum ROLE {
+  SUPERADMIN
+  ADMIN
+  CLIENT
+}
+
+enum GENDER {
+  MALE
+  FEMALE
+  OTHERS
+}
+
+enum PROVINCE {
+  PROVINCE_1
+  PROVINCE_2
+  PROVINCE_3
+  PROVINCE_4
+  PROVINCE_5
+  PROVINCE_6
+  PROVINCE_7
+}

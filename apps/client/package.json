@@ -10,8 +10,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@mantine/carousel": "^6.0.11",
+    "@mantine/core": "^6.0.11",
+    "@mantine/dates": "^6.0.11",
+    "@mantine/dropzone": "^6.0.11",
+    "@mantine/ds": "^6.0.11",
+    "@mantine/form": "^6.0.11",
+    "@mantine/hooks": "^6.0.11",
+    "@mantine/modals": "^6.0.11",
+    "@mantine/notifications": "^6.0.11",
+    "@mantine/nprogress": "^6.0.11",
+    "@mantine/prism": "^6.0.11",
+    "@mantine/spotlight": "^6.0.11",
+    "@tabler/icons-react": "^2.20.0",
+    "dayjs": "^1.11.7",
+    "embla-carousel-react": "^8.0.0-rc04",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.2",
+    "tabler-icons-react": "^1.56.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
@@ -19,9 +37,12 @@
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react": "^4.0.0",
+    "autoprefixer": "^10.4.14",
     "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2",
     "typescript": "^5.0.2",
     "vite": "^4.3.2"
   }
