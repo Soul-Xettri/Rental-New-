@@ -12,6 +12,14 @@ import {
 import { GoogleButton, TwitterButton } from "../SocialButtons/SocialButtons";
 import { Link } from "react-router-dom";
 import { isEmail, useForm } from "@mantine/form";
+import { useMutation } from "@tanstack/react-query";
+import { PostQuery } from "../../utils/ApiCall";
+import { LOGIN } from "../../utils/ApiRoutes";
+import Cookies from "js-cookie";
+
+const handleLoginPost = async (data: any) => {
+  return (await PostQuery(LOGIN, data))?.data;
+};
 
 export function Login() {
   const form = useForm({
@@ -27,6 +35,20 @@ export function Login() {
       // password: (val) => (/^\S+@\S+$/.test(val) ? null : "Invalid password"),
     },
   });
+
+  const { mutate, isLoading } = useMutation(handleLoginPost);
+  const handleLogin = (data: any) => {
+    mutate(data, {
+      onSuccess: async (data) => {
+        Cookies.set("token", data.access_token);
+        // const {data:user}= await FetchQuery(ME);
+        console.log("success:true");
+      },
+      onError: async (error: any) => {
+        console.log(error.data.response);
+      },
+    });
+  };
   return (
     <>
       <Divider label="Log in with" labelPosition="center" my="lg" />
@@ -36,7 +58,11 @@ export function Login() {
       </Group>
       <Divider label="Or continue with" labelPosition="center" my="lg" />
       <Paper withBorder shadow="md" p={30} radius="md">
-        <form onSubmit={form.onSubmit(() => {})}>
+        <form
+          onSubmit={form.onSubmit((values) => {
+            handleLogin(values);
+          })}
+        >
           <Stack>
             <TextInput
               label="Email"
@@ -55,6 +81,7 @@ export function Login() {
               </Anchor>
             </Group>
             <Button
+              loading={isLoading}
               type="submit"
               fullWidth
               className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white text-sm"
