@@ -4,17 +4,19 @@ import { TopHeader } from "./components/Navbar/TopHeader";
 import { ForgotPassword } from "./components/Auth/ForgotPassword";
 import { Error404 } from "./components/PageError/Error404";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-// import { NavigationProgress, nprogress } from "@mantine/nprogress";
+// import { useState } from "react";
+// import LoadingBar from "react-top-loading-bar";
 
 const queryClient = new QueryClient();
 
 function App() {
+  // const [progress, setProgress] = useState(0);
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <Router>
           <TopHeader />
-          {/* <NavigationProgress /> */}
+          {/* <LoadingBar height={3} color="#f11946" progress={progress} /> */}
           <Routes>
             <Route path="/auth" element={<Authentication />} />
             <Route path="/auth/forgot-password" element={<ForgotPassword />} />

@@ -47,6 +47,8 @@ export function Registration() {
         "Password must have 6  or more characters"
       ),
       confirmPassword: matchesField("password", "Passwords are not the same"),
+      terms: (termsCheck) =>
+        termsCheck === false ? "Check the terms and conditions" : null,
     },
   });
 
@@ -125,9 +127,7 @@ export function Registration() {
             <Group>
               <Checkbox
                 checked={form.values.terms}
-                onChange={(event) =>
-                  form.setFieldValue("terms", event.currentTarget.checked)
-                }
+                {...form.getInputProps("terms")}
               />
               <Link to="/">I accept terms and conditions</Link>
             </Group>

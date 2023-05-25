@@ -6,6 +6,31 @@ import { Registration } from "./Registration";
 
 export default function Authentication() {
   const [activeTab, setActiveTab] = useState<string | null>("first");
+  // const [loading, setLoading] = useState(false);
+  // useEffect(() => {
+  //   // setLoading(true);
+  //   // props.setProgress(30);
+  //   // setTimeout(() => {
+  //   //   setLoading(false);
+  //   //   props.setProgress(70);
+  //   // }, 10000);
+  //   // props.setProgress(100);
+  //   updatePage();
+  // }, []);
+
+  // const updatePage = async () => {
+  //   props.setProgress(10);
+  //   setLoading(true);
+  //   props.setProgress(30);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //     props.setProgress(70);
+  //   }, 40000);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 40000);
+  //   props.setProgress(100);
+  // };
   return (
     <Container size={420} my={40}>
       <Title

@@ -28,33 +28,28 @@ import {
   IconChevronDown,
   IconBuildingCommunity,
 } from "@tabler/icons-react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   link: {
-    display: "flex",
-    alignItems: "center",
-    height: "100%",
-    paddingLeft: theme.spacing.md,
-    paddingRight: theme.spacing.md,
+    display: "block",
+    lineHeight: 1,
+    padding: `${rem(8)} ${rem(12)}`,
+    borderRadius: theme.radius.sm,
     textDecoration: "none",
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
-    fontWeight: 500,
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[0]
+        : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
+    fontWeight: 500,
 
-    [theme.fn.smallerThan("sm")]: {
-      height: rem(42),
-      display: "flex",
-      alignItems: "center",
-      width: "100%",
-    },
-
-    ...theme.fn.hover({
+    "&:hover": {
       backgroundColor:
         theme.colorScheme === "dark"
           ? theme.colors.dark[6]
           : theme.colors.gray[0],
-    }),
+    },
   },
 
   subLink: {
@@ -71,7 +66,16 @@ const useStyles = createStyles((theme) => ({
 
     "&:active": theme.activeStyles,
   },
-
+  linkActive: {
+    "&, &:hover": {
+      backgroundColor: theme.fn.variant({
+        variant: "light",
+        color: theme.primaryColor,
+      }).background,
+      color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
+        .color,
+    },
+  },
   dropdownFooter: {
     backgroundColor:
       theme.colorScheme === "dark"
@@ -167,24 +171,144 @@ export function TopHeader() {
             spacing={0}
             className={classes.hiddenMobile}
           >
-            <a href="#" className={classes.link}>
+            <NavLink
+              to="/home"
+              className={classes.link}
+              style={({ isActive }) => {
+                return {
+                  backgroundColor: isActive
+                    ? theme.fn.variant({
+                        variant: "light",
+                        color: theme.primaryColor,
+                      }).background
+                    : "",
+
+                  color: isActive
+                    ? theme.fn.variant({
+                        variant: "light",
+                        color: theme.primaryColor,
+                      }).color
+                    : "",
+                };
+              }}
+            >
               Home
-            </a>
-            <a href="#" className={classes.link}>
+            </NavLink>
+            <NavLink
+              to="/buy"
+              className={classes.link}
+              style={({ isActive }) => {
+                return {
+                  backgroundColor: isActive
+                    ? theme.fn.variant({
+                        variant: "light",
+                        color: theme.primaryColor,
+                      }).background
+                    : "",
+
+                  color: isActive
+                    ? theme.fn.variant({
+                        variant: "light",
+                        color: theme.primaryColor,
+                      }).color
+                    : "",
+                };
+              }}
+            >
               Buy
-            </a>
-            <a href="#" className={classes.link}>
+            </NavLink>
+            <NavLink
+              to="/rent"
+              className={classes.link}
+              style={({ isActive }) => {
+                return {
+                  backgroundColor: isActive
+                    ? theme.fn.variant({
+                        variant: "light",
+                        color: theme.primaryColor,
+                      }).background
+                    : "",
+
+                  color: isActive
+                    ? theme.fn.variant({
+                        variant: "light",
+                        color: theme.primaryColor,
+                      }).color
+                    : "",
+                };
+              }}
+            >
               Rent
-            </a>
-            <a href="#" className={classes.link}>
+            </NavLink>
+            <NavLink
+              to="sale"
+              className={classes.link}
+              style={({ isActive }) => {
+                return {
+                  backgroundColor: isActive
+                    ? theme.fn.variant({
+                        variant: "light",
+                        color: theme.primaryColor,
+                      }).background
+                    : "",
+
+                  color: isActive
+                    ? theme.fn.variant({
+                        variant: "light",
+                        color: theme.primaryColor,
+                      }).color
+                    : "",
+                };
+              }}
+            >
               Sale
-            </a>
-            <a href="#" className={classes.link}>
+            </NavLink>
+            <NavLink
+              to="home-loans"
+              className={classes.link}
+              style={({ isActive }) => {
+                return {
+                  backgroundColor: isActive
+                    ? theme.fn.variant({
+                        variant: "light",
+                        color: theme.primaryColor,
+                      }).background
+                    : "",
+
+                  color: isActive
+                    ? theme.fn.variant({
+                        variant: "light",
+                        color: theme.primaryColor,
+                      }).color
+                    : "",
+                };
+              }}
+            >
               Home Loans
-            </a>
-            <a href="#" className={classes.link}>
+            </NavLink>
+            <NavLink
+              to="agent-finder"
+              className={classes.link}
+              style={({ isActive }) => {
+                return {
+                  backgroundColor: isActive
+                    ? theme.fn.variant({
+                        variant: "light",
+                        color: theme.primaryColor,
+                      }).background
+                    : "",
+
+                  color: isActive
+                    ? theme.fn.variant({
+                        variant: "light",
+                        color: theme.primaryColor,
+                      }).color
+                    : "",
+                };
+              }}
+            >
               Agent Finder
-            </a>
+            </NavLink>
             <HoverCard
               width={600}
               position="bottom"
@@ -193,7 +317,27 @@ export function TopHeader() {
               withinPortal
             >
               <HoverCard.Target>
-                <a href="#" className={classes.link}>
+                <NavLink
+                  to="#"
+                  className={classes.link}
+                  // style={({ isActive }) => {
+                  //   return {
+                  //     backgroundColor: isActive
+                  //       ? theme.fn.variant({
+                  //           variant: "light",
+                  //           color: theme.primaryColor,
+                  //         }).background
+                  //       : "",
+
+                  //     color: isActive
+                  //       ? theme.fn.variant({
+                  //           variant: "light",
+                  //           color: theme.primaryColor,
+                  //         }).color
+                  //       : "",
+                  //   };
+                  // }}
+                >
                   <Center inline>
                     <Box component="span" mr={5}>
                       Features
@@ -203,13 +347,13 @@ export function TopHeader() {
                       color={theme.fn.primaryColor()}
                     />
                   </Center>
-                </a>
+                </NavLink>
               </HoverCard.Target>
 
               <HoverCard.Dropdown sx={{ overflow: "hidden" }}>
                 <Group position="apart" px="md">
                   <Text fw={500}>Features</Text>
-                  <Anchor href="#" fz="xs">
+                  <Anchor href="" fz="xs">
                     View all
                   </Anchor>
                 </Group>
@@ -235,7 +379,7 @@ export function TopHeader() {
                       </Text>
                     </div>
                     <Button variant="default">
-                      <Link to="/auth">Get started</Link>
+                      <Anchor href="/auth">Get started</Anchor>
                     </Button>
                   </Group>
                 </div>
@@ -245,11 +389,11 @@ export function TopHeader() {
 
           <Group className={classes.hiddenMobile}>
             <Button variant="default">
-              <Link to="/auth">Log in</Link>
+              <a href="/auth">Log in</a>
             </Button>
             <Button className=" bg-blue-600 hover:bg-blue-700">
               {" "}
-              <Link to="/auth">Sign up</Link>
+              <a href="/auth">Sign up</a>
             </Button>
           </Group>
 
@@ -276,24 +420,33 @@ export function TopHeader() {
             color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
           />
 
-          <a href="#" className={classes.link}>
+          <NavLink
+            to=""
+            className={classes.link}
+            style={({ isActive, isPending }) => {
+              return {
+                fontWeight: isActive ? "bold" : "",
+                color: isPending ? "red" : "black",
+              };
+            }}
+          >
             Home
-          </a>
-          <a href="#" className={classes.link}>
+          </NavLink>
+          <NavLink to="" className={classes.link}>
             Buy
-          </a>
-          <a href="#" className={classes.link}>
+          </NavLink>
+          <NavLink to="" className={classes.link}>
             Rent
-          </a>
-          <a href="#" className={classes.link}>
+          </NavLink>
+          <NavLink to="" className={classes.link}>
             Sale
-          </a>
-          <a href="#" className={classes.link}>
+          </NavLink>
+          <NavLink to="" className={classes.link}>
             Home Loans
-          </a>
-          <a href="#" className={classes.link}>
+          </NavLink>
+          <NavLink to="" className={classes.link}>
             Agent Finder
-          </a>
+          </NavLink>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
               <Box component="span" mr={5}>
@@ -311,11 +464,11 @@ export function TopHeader() {
 
           <Group position="center" grow pb="xl" px="md">
             <Button variant="default">
-              <a href="/auth">Log in</a>
+              <NavLink to="/auth">Log in</NavLink>
             </Button>
             <Button className=" bg-blue-600 hover:bg-blue-700">
               {" "}
-              <a href="/auth">Sign up</a>
+              <NavLink to="/auth">Sign up</NavLink>
             </Button>
           </Group>
         </ScrollArea>
