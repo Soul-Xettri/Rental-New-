@@ -8,9 +8,17 @@ import {
   Checkbox,
   Stack,
 } from "@mantine/core";
+
 import { GoogleButton, TwitterButton } from "../SocialButtons/SocialButtons";
-import { useForm } from "@mantine/form";
+import { hasLength, isEmail, matchesField, useForm } from "@mantine/form";
 import { Link } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { SIGNUP } from "../../utils/ApiRoutes";
+import { PostQuery } from "../../utils/ApiCall";
+
+const handlRegisterationPost = async (data: any) => {
+  return (await PostQuery(SIGNUP, data))?.data;
+};
 
 export function Registration() {
   const form = useForm({
@@ -18,28 +26,50 @@ export function Registration() {
       firstName: "",
       lastName: "",
       email: "",
-      phoneNumber: "",
+      mobileNumber: "",
       password: "",
       confirmPassword: "",
-      terms: true,
+      terms: false,
     },
-
     validate: {
-      firstName: (value) =>
-        value.length < 2 ? "Name must have at least 2 letters" : null,
-      lastName: (value) =>
-        value.length < 2 ? "Name must have at least 2 letters" : null,
-      email: (email) => (/^\S+@\S+$/.test(email) ? null : "Invalid email"),
-      phoneNumber: (phone) =>
-        phone.length < 10 ? "Invalid phone number" : null,
-      password: (val) =>
-        val.length <= 6
-          ? "Password should include at least 6 characters"
-          : null,
-      confirmPassword: (value, val) =>
-        value !== val.password ? "Passwords did not match" : null,
+      firstName: hasLength(
+        { min: 2, max: 10 },
+        "Name must be 2-10 characters long"
+      ),
+      lastName: hasLength(
+        { min: 2, max: 10 },
+        "Name must be 2-10 characters long"
+      ),
+      email: isEmail("Invalid email"),
+      mobileNumber: hasLength({ min: 2, max: 10 }, "Invalid mobile number"),
+      password: hasLength(
+        { min: 6 },
+        "Password must have 6  or more characters"
+      ),
+      confirmPassword: matchesField("password", "Passwords are not the same"),
     },
   });
+
+  // const formValues = form.values;
+
+  // const [post, setPost] = useState(formValues);
+
+  // const handleInput = (event: any) => {
+  //   setPost({ ...post, [event.target.name]: event.target.value });
+  // };
+
+  const { mutate, isLoading } = useMutation(handlRegisterationPost);
+  const handleRegister = (data: any) => {
+    mutate(data, {
+      onSuccess: async () => {
+        console.log("success");
+      },
+      onError: (e: any) => {
+        console.log(e.response.data);
+      },
+    });
+  };
+
   return (
     <>
       <Divider label="Sign up with" labelPosition="center" my="lg" />
@@ -49,68 +79,48 @@ export function Registration() {
       </Group>
       <Divider label="Or continue with" labelPosition="center" my="lg" />
       <Paper withBorder shadow="md" p={30}>
-        <form onSubmit={form.onSubmit(() => {})}>
+        <form
+          onSubmit={form.onSubmit((values) => {
+            handleRegister(values);
+          })}
+        >
           <Stack>
             <TextInput
+              name="firstName"
               label="First Name"
               placeholder="Enter First Name"
-              value={form.values.firstName}
-              onChange={(event) =>
-                form.setFieldValue("firstName", event.currentTarget.value)
-              }
-              error={
-                form.errors.firstName && " Name must have at least 2 letters"
-              }
+              withAsterisk
+              {...form.getInputProps("firstName")}
             />
             <TextInput
               label="Last Name"
               placeholder="Enter Last Name"
-              value={form.values.lastName}
-              onChange={(event) =>
-                form.setFieldValue("lastName", event.currentTarget.value)
-              }
-              error={
-                form.errors.lastName && " Name must have at least 2 letters"
-              }
+              withAsterisk
+              {...form.getInputProps("lastName")}
             />
             <TextInput
               label="Email"
               placeholder="Enter Email"
-              value={form.values.email}
-              onChange={(event) =>
-                form.setFieldValue("email", event.currentTarget.value)
-              }
-              error={form.errors.email && "Invalid email"}
+              withAsterisk
+              {...form.getInputProps("email")}
             />
             <TextInput
               label="Mobile Number"
               placeholder="Enter Mobile Number"
-              value={form.values.phoneNumber}
-              onChange={(event) =>
-                form.setFieldValue("phoneNumber", event.currentTarget.value)
-              }
-              error={form.errors.phoneNumber && "Invalid phone number"}
+              withAsterisk
+              {...form.getInputProps("mobileNumber")}
             />
             <PasswordInput
               label="Password"
               placeholder="Enter Password"
-              value={form.values.password}
-              onChange={(event) =>
-                form.setFieldValue("password", event.currentTarget.value)
-              }
-              error={
-                form.errors.password &&
-                "Password should include at least 6 characters"
-              }
+              withAsterisk
+              {...form.getInputProps("password")}
             />
             <PasswordInput
               label="Confirm Password"
               placeholder="Enter Password Again"
-              value={form.values.confirmPassword}
-              onChange={(event) =>
-                form.setFieldValue("confirmPassword", event.currentTarget.value)
-              }
-              error={form.errors.confirmPassword && "Passwords did not match"}
+              withAsterisk
+              {...form.getInputProps("confirmPassword")}
             />
             <Group>
               <Checkbox
@@ -123,6 +133,7 @@ export function Registration() {
             </Group>
 
             <Button
+              loading={isLoading}
               type="submit"
               fullWidth
               className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white text-sm"

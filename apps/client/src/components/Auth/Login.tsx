@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import { GoogleButton, TwitterButton } from "../SocialButtons/SocialButtons";
 import { Link } from "react-router-dom";
-import { useForm } from "@mantine/form";
+import { isEmail, useForm } from "@mantine/form";
 
 export function Login() {
   const form = useForm({
@@ -22,8 +22,9 @@ export function Login() {
     },
 
     validate: {
-      email: (email) => (/^\S+@\S+$/.test(email) ? null : "Invalid email"),
-      password: (val) => (/^\S+@\S+$/.test(val) ? null : "Invalid password"),
+      email: isEmail("Invalid email"),
+
+      // password: (val) => (/^\S+@\S+$/.test(val) ? null : "Invalid password"),
     },
   });
   return (
@@ -40,20 +41,12 @@ export function Login() {
             <TextInput
               label="Email"
               placeholder="Enter Email"
-              value={form.values.email}
-              onChange={(event) =>
-                form.setFieldValue("email", event.currentTarget.value)
-              }
-              error={form.errors.email && "Invalid email"}
+              {...form.getInputProps("email")}
             />
             <PasswordInput
               label="Password"
               placeholder="Enter Password"
-              value={form.values.password}
-              onChange={(event) =>
-                form.setFieldValue("password", event.currentTarget.value)
-              }
-              error={form.errors.password && "Invalid password"}
+              {...form.getInputProps("password")}
             />
             <Group position="apart">
               <Checkbox label="Remember me" />

@@ -19,17 +19,20 @@
     "@mantine/form": "^6.0.11",
     "@mantine/hooks": "^6.0.11",
     "@mantine/modals": "^6.0.11",
-    "@mantine/notifications": "^6.0.11",
     "@mantine/nprogress": "^6.0.11",
     "@mantine/prism": "^6.0.11",
     "@mantine/spotlight": "^6.0.11",
     "@tabler/icons-react": "^2.20.0",
+    "@tanstack/react-query": "^4.29.7",
+    "axios": "^1.4.0",
     "dayjs": "^1.11.7",
     "embla-carousel-react": "^8.0.0-rc04",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
     "react-router-dom": "^6.11.2",
-    "tabler-icons-react": "^1.56.0"
+    "tabler-icons-react": "^1.56.0",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
