@@ -80,7 +80,7 @@ export function Registration() {
         <TwitterButton radius="xl">Twitter</TwitterButton>
       </Group>
       <Divider label="Or continue with" labelPosition="center" my="lg" />
-      <Paper withBorder shadow="md" p={30}>
+      <Paper withBorder shadow="md" p={30} radius="md">
         <form
           onSubmit={form.onSubmit((values) => {
             handleRegister(values);

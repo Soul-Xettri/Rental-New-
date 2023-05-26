@@ -17,10 +17,26 @@ import {
   Collapse,
   ScrollArea,
   rem,
+  Menu,
+  Avatar,
+  ActionIcon,
+  useMantineColorScheme,
 } from "@mantine/core";
 import { MantineLogo } from "@mantine/ds";
 import { useDisclosure } from "@mantine/hooks";
-import { IconHelp, IconHierarchy } from "@tabler/icons-react";
+import { IconMoonStars, IconSun } from "@tabler/icons-react";
+import {
+  IconHeart,
+  IconHelp,
+  IconHierarchy,
+  IconLogout,
+  IconMessage,
+  IconPlayerPause,
+  IconSettings,
+  IconStar,
+  IconSwitchHorizontal,
+  IconTrash,
+} from "@tabler/icons-react";
 import {
   IconChartPie3,
   IconFingerprint,
@@ -28,6 +44,7 @@ import {
   IconChevronDown,
   IconBuildingCommunity,
 } from "@tabler/icons-react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
@@ -101,6 +118,25 @@ const useStyles = createStyles((theme) => ({
       display: "none",
     },
   },
+  user: {
+    color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
+    padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
+    borderRadius: theme.radius.sm,
+    transition: "background-color 100ms ease",
+
+    "&:hover": {
+      backgroundColor:
+        theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
+    },
+
+    [theme.fn.smallerThan("xs")]: {
+      display: "none",
+    },
+  },
+  userActive: {
+    backgroundColor:
+      theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
+  },
 }));
 
 const mockdata = [
@@ -136,11 +172,15 @@ const mockdata = [
   },
 ];
 
-export function TopHeader() {
+interface HeaderTabsProps {
+  user: { name: string; image: string };
+}
+export function TopHeader({ user }: HeaderTabsProps) {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
-  const { classes, theme } = useStyles();
+  const { classes, theme, cx } = useStyles();
+  const [userMenuOpened, setUserMenuOpened] = useState(false);
 
   const links = mockdata.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.title}>
@@ -159,7 +199,7 @@ export function TopHeader() {
       </Group>
     </UnstyledButton>
   ));
-
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   return (
     <Box>
       <Header height={60} px="md">
@@ -388,13 +428,126 @@ export function TopHeader() {
           </Group>
 
           <Group className={classes.hiddenMobile}>
-            <Button variant="default">
+            <ActionIcon
+              onClick={() => toggleColorScheme()}
+              size="lg"
+              sx={(theme) => ({
+                backgroundColor:
+                  theme.colorScheme === "dark"
+                    ? theme.colors.dark[6]
+                    : theme.colors.gray[0],
+                color:
+                  theme.colorScheme === "dark"
+                    ? theme.colors.yellow[4]
+                    : theme.colors.blue[6],
+              })}
+            >
+              {colorScheme === "dark" ? (
+                <IconSun size="1.2rem" />
+              ) : (
+                <IconMoonStars size="1.2rem" />
+              )}
+            </ActionIcon>
+
+            <Menu
+              width={260}
+              position="bottom-end"
+              transitionProps={{ transition: "pop-top-right" }}
+              onClose={() => setUserMenuOpened(false)}
+              onOpen={() => setUserMenuOpened(true)}
+              withinPortal
+            >
+              <Menu.Target>
+                <UnstyledButton
+                  className={cx(classes.user, {
+                    [classes.userActive]: userMenuOpened,
+                  })}
+                >
+                  <Group spacing={7}>
+                    <Avatar
+                      src={user.image}
+                      alt={user.name}
+                      radius="xl"
+                      size={20}
+                    />
+                    <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3}>
+                      {user.name}
+                    </Text>
+                    <IconChevronDown size={rem(12)} stroke={1.5} />
+                  </Group>
+                </UnstyledButton>
+              </Menu.Target>
+              <Menu.Dropdown>
+                <Menu.Item
+                  icon={
+                    <IconHeart
+                      size="0.9rem"
+                      color={theme.colors.red[6]}
+                      stroke={1.5}
+                    />
+                  }
+                >
+                  Liked Propeties
+                </Menu.Item>
+                <Menu.Item
+                  icon={
+                    <IconStar
+                      size="0.9rem"
+                      color={theme.colors.yellow[6]}
+                      stroke={1.5}
+                    />
+                  }
+                >
+                  Saved Propeties
+                </Menu.Item>
+                <Menu.Item
+                  icon={
+                    <IconMessage
+                      size="0.9rem"
+                      color={theme.colors.blue[6]}
+                      stroke={1.5}
+                    />
+                  }
+                >
+                  Your comments
+                </Menu.Item>
+
+                <Menu.Label>Settings</Menu.Label>
+                <Menu.Item icon={<IconSettings size="0.9rem" stroke={1.5} />}>
+                  Account settings
+                </Menu.Item>
+                <Menu.Item
+                  icon={<IconSwitchHorizontal size="0.9rem" stroke={1.5} />}
+                >
+                  Change account
+                </Menu.Item>
+                <Menu.Item icon={<IconLogout size="0.9rem" stroke={1.5} />}>
+                  Logout
+                </Menu.Item>
+
+                <Menu.Divider />
+
+                <Menu.Label>Danger zone</Menu.Label>
+                <Menu.Item
+                  icon={<IconPlayerPause size="0.9rem" stroke={1.5} />}
+                >
+                  Pause subscription
+                </Menu.Item>
+                <Menu.Item
+                  color="red"
+                  icon={<IconTrash size="0.9rem" stroke={1.5} />}
+                >
+                  Delete account
+                </Menu.Item>
+              </Menu.Dropdown>
+            </Menu>
+            {/* <Button variant="default">
               <a href="/auth">Log in</a>
             </Button>
             <Button className=" bg-blue-600 hover:bg-blue-700">
               {" "}
               <a href="/auth">Sign up</a>
-            </Button>
+            </Button> */}
           </Group>
 
           <Burger
@@ -464,11 +617,11 @@ export function TopHeader() {
 
           <Group position="center" grow pb="xl" px="md">
             <Button variant="default">
-              <NavLink to="/auth">Log in</NavLink>
+              <a href="/auth">Log in</a>
             </Button>
             <Button className=" bg-blue-600 hover:bg-blue-700">
               {" "}
-              <NavLink to="/auth">Sign up</NavLink>
+              <a href="/auth">Sign up</a>
             </Button>
           </Group>
         </ScrollArea>
