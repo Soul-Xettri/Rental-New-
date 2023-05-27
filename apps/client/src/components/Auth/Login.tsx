@@ -64,6 +64,12 @@ export function Login() {
           })}
         >
           <Stack>
+            <Button
+              variant="gradient"
+              gradient={{ from: "teal", to: "blue", deg: 60 }}
+            >
+              Teal blue
+            </Button>
             <TextInput
               label="Email"
               placeholder="Enter Email"

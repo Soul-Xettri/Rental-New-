@@ -15,6 +15,16 @@ async function main() {
       role: 'SUPERADMIN',
     },
   });
+  await prisma.heroSection.create({
+    data: {
+      heading: 'Wellcome to Rentals',
+      subHeading: 'Your Gateway to Premium Properties!',
+      description:
+        "Find your dream home with ease, whether you're looking to rent or buy. We are your trusted destination for exceptional rental properties and enticing sale options. Our extensive collection of listings is meticulously curated to meet the diverse needs and preferences of our valued clients.",
+      image:
+        'http://localhost:3000/api/home/pictures/pexels-eberhard-grossgasteiger-1421903_1685201024926.jpg',
+    },
+  });
 }
 main()
   .then(async () => {

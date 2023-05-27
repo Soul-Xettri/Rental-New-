@@ -46,7 +46,7 @@ model HeroSection {
   id          Int     @id @default(autoincrement())
   heading     String?
   subHeading  String?
-  description String?
+  description String? @db.VarChar(360)
   image       String?
   Home        Home?
 }
