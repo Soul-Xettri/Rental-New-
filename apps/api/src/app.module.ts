@@ -9,6 +9,7 @@ import { AtGuard, UsercheckGuard } from './common/guards';
 import { APP_GUARD } from '@nestjs/core';
 import { MessageModule } from './message/message.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { HomeModule } from './home/home.module';
 @Module({
   imports: [
     MulterModule.register({
@@ -23,6 +24,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
     NotificationModule,
     MailModule,
     MessageModule,
+    HomeModule,
   ],
   providers: [
     {

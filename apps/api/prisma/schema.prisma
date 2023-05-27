@@ -32,6 +32,60 @@ model User {
   @@map("users")
 }
 
+model Home {
+  id               Int                @id @default(autoincrement())
+  heroSection      HeroSection?       @relation(fields: [heroSectionId], references: [id])
+  heroSectionId    Int?               @unique
+  popularCity      PopularCity[]
+  featuredProperty FeaturedProperty[]
+  recentProperty   RecentProperty[]
+  team             Team[]
+}
+
+model HeroSection {
+  id          Int     @id @default(autoincrement())
+  heading     String?
+  subHeading  String?
+  description String?
+  image       String?
+  Home        Home?
+}
+
+model PopularCity {
+  id            Int     @id @default(autoincrement())
+  cityName      String
+  image         String?
+  propertyCount Int
+  Home          Home?   @relation(fields: [homeId], references: [id])
+  homeId        Int?
+}
+
+model FeaturedProperty {
+  id           Int     @id @default(autoincrement())
+  propertyName String
+  image        String?
+  price        String
+  Home         Home?   @relation(fields: [homeId], references: [id])
+  homeId       Int?
+}
+
+model RecentProperty {
+  id           Int     @id @default(autoincrement())
+  propertyName String
+  image        String?
+  price        String
+  Home         Home?   @relation(fields: [homeId], references: [id])
+  homeId       Int?
+}
+
+model Team {
+  id     Int    @id @default(autoincrement())
+  name   String
+  info   String
+  Home   Home?  @relation(fields: [homeId], references: [id])
+  homeId Int?
+}
+
 model Kyc {
   id                          Int             @id @default(autoincrement())
   registeredName              String
@@ -124,6 +178,7 @@ enum MessageType {
 enum ROLE {
   SUPERADMIN
   ADMIN
+  AGENT
   CLIENT
 }
 
