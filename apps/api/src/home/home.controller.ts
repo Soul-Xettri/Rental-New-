@@ -94,6 +94,11 @@ export class HomeController {
   ) {
     return this.homeserive.updateHeroSection(dto, file);
   }
+  @Public()
+  @Get('hero')
+  getHero() {
+    return this.homeserive.getHero();
+  }
 
   @Public()
   @Get('pictures/:filename')

@@ -32,4 +32,13 @@ export class HomeService {
     });
     return hero;
   }
+
+  async getHero() {
+    const hero = await this.prisma.heroSection.findFirst({
+      where: {
+        id: 1,
+      },
+    });
+    return hero;
+  }
 }
