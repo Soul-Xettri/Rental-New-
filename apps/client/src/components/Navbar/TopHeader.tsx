@@ -21,6 +21,7 @@ import {
   Avatar,
   ActionIcon,
   useMantineColorScheme,
+  Paper,
 } from "@mantine/core";
 import { MantineLogo } from "@mantine/ds";
 import { useDisclosure } from "@mantine/hooks";
@@ -391,38 +392,40 @@ export function TopHeader({ user }: HeaderTabsProps) {
               </HoverCard.Target>
 
               <HoverCard.Dropdown sx={{ overflow: "hidden" }}>
-                <Group position="apart" px="md">
-                  <Text fw={500}>Features</Text>
-                  <Anchor href="" fz="xs">
-                    View all
-                  </Anchor>
-                </Group>
-
-                <Divider
-                  my="sm"
-                  mx="-md"
-                  color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
-                />
-
-                <SimpleGrid cols={2} spacing={0}>
-                  {links}
-                </SimpleGrid>
-
-                <div className={classes.dropdownFooter}>
-                  <Group position="apart">
-                    <div>
-                      <Text fw={500} fz="sm">
-                        Get started
-                      </Text>
-                      <Text size="xs" color="dimmed">
-                        Their food sources have decreased, and their numbers
-                      </Text>
-                    </div>
-                    <Button variant="default">
-                      <Anchor href="/auth">Get started</Anchor>
-                    </Button>
+                <Paper p="md" radius="0">
+                  <Group position="apart" px="md">
+                    <Text fw={500}>Features</Text>
+                    <Anchor href="" fz="xs">
+                      View all
+                    </Anchor>
                   </Group>
-                </div>
+
+                  <Divider
+                    my="sm"
+                    mx="-md"
+                    color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
+                  />
+
+                  <SimpleGrid cols={2} spacing={0}>
+                    {links}
+                  </SimpleGrid>
+
+                  <div className={classes.dropdownFooter}>
+                    <Group position="apart">
+                      <div>
+                        <Text fw={500} fz="sm">
+                          Get started
+                        </Text>
+                        <Text size="xs" color="dimmed">
+                          Their food sources have decreased, and their numbers
+                        </Text>
+                      </div>
+                      <Button variant="default">
+                        <Anchor href="/auth">Get started</Anchor>
+                      </Button>
+                    </Group>
+                  </div>
+                </Paper>
               </HoverCard.Dropdown>
             </HoverCard>
           </Group>
@@ -574,30 +577,147 @@ export function TopHeader({ user }: HeaderTabsProps) {
           />
 
           <NavLink
-            to=""
+            to="home"
+            onClick={closeDrawer}
             className={classes.link}
-            style={({ isActive, isPending }) => {
+            style={({ isActive }) => {
               return {
-                fontWeight: isActive ? "bold" : "",
-                color: isPending ? "red" : "black",
+                backgroundColor: isActive
+                  ? theme.fn.variant({
+                      variant: "light",
+                      color: theme.primaryColor,
+                    }).background
+                  : "",
+
+                color: isActive
+                  ? theme.fn.variant({
+                      variant: "light",
+                      color: theme.primaryColor,
+                    }).color
+                  : "",
               };
             }}
           >
             Home
           </NavLink>
-          <NavLink to="" className={classes.link}>
+          <NavLink
+            to="buy"
+            onClick={closeDrawer}
+            className={classes.link}
+            style={({ isActive }) => {
+              return {
+                backgroundColor: isActive
+                  ? theme.fn.variant({
+                      variant: "light",
+                      color: theme.primaryColor,
+                    }).background
+                  : "",
+
+                color: isActive
+                  ? theme.fn.variant({
+                      variant: "light",
+                      color: theme.primaryColor,
+                    }).color
+                  : "",
+              };
+            }}
+          >
             Buy
           </NavLink>
-          <NavLink to="" className={classes.link}>
+          <NavLink
+            to="rent"
+            onClick={closeDrawer}
+            className={classes.link}
+            style={({ isActive }) => {
+              return {
+                backgroundColor: isActive
+                  ? theme.fn.variant({
+                      variant: "light",
+                      color: theme.primaryColor,
+                    }).background
+                  : "",
+
+                color: isActive
+                  ? theme.fn.variant({
+                      variant: "light",
+                      color: theme.primaryColor,
+                    }).color
+                  : "",
+              };
+            }}
+          >
             Rent
           </NavLink>
-          <NavLink to="" className={classes.link}>
+          <NavLink
+            to="sale"
+            onClick={closeDrawer}
+            className={classes.link}
+            style={({ isActive }) => {
+              return {
+                backgroundColor: isActive
+                  ? theme.fn.variant({
+                      variant: "light",
+                      color: theme.primaryColor,
+                    }).background
+                  : "",
+
+                color: isActive
+                  ? theme.fn.variant({
+                      variant: "light",
+                      color: theme.primaryColor,
+                    }).color
+                  : "",
+              };
+            }}
+          >
             Sale
           </NavLink>
-          <NavLink to="" className={classes.link}>
+          <NavLink
+            to="home-loans"
+            onClick={closeDrawer}
+            className={classes.link}
+            style={({ isActive }) => {
+              return {
+                backgroundColor: isActive
+                  ? theme.fn.variant({
+                      variant: "light",
+                      color: theme.primaryColor,
+                    }).background
+                  : "",
+
+                color: isActive
+                  ? theme.fn.variant({
+                      variant: "light",
+                      color: theme.primaryColor,
+                    }).color
+                  : "",
+              };
+            }}
+          >
             Home Loans
           </NavLink>
-          <NavLink to="" className={classes.link}>
+          <NavLink
+            to="agent-finder"
+            onClick={closeDrawer}
+            className={classes.link}
+            style={({ isActive }) => {
+              return {
+                backgroundColor: isActive
+                  ? theme.fn.variant({
+                      variant: "light",
+                      color: theme.primaryColor,
+                    }).background
+                  : "",
+
+                color: isActive
+                  ? theme.fn.variant({
+                      variant: "light",
+                      color: theme.primaryColor,
+                    }).color
+                  : "",
+              };
+            }}
+          >
             Agent Finder
           </NavLink>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
