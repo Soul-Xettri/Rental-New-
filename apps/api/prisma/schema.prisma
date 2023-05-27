@@ -86,6 +86,11 @@ model Team {
   homeId Int?
 }
 
+model Uploads {
+  id       Int    @id @default(autoincrement())
+  fileName String
+}
+
 model Kyc {
   id                          Int             @id @default(autoincrement())
   registeredName              String

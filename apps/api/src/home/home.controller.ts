@@ -95,39 +95,6 @@ export class HomeController {
     return this.homeserive.updateHeroSection(dto, file);
   }
 
-  @Post('file')
-  @UseInterceptors(
-    FileInterceptor('file', {
-      storage: diskStorage({
-        destination: './uploads',
-        filename(req, file, callback) {
-          const name = file.originalname.split('.')[0];
-          const fileExtentsion = file.originalname.split('.')[1];
-          const newFileName =
-            name.split(' ').join('_') + '_' + Date.now() + '.' + fileExtentsion;
-
-          callback(null, newFileName);
-        },
-      }),
-      fileFilter: (req, file, callback) => {
-        if (!file.originalname.match(/\.(jpg|jpeg|png|gif|JPG)$/)) {
-          return callback(null, false);
-        } else {
-          callback(null, true);
-        }
-      },
-    }),
-  )
-  uploadPhoto(@UploadedFile() file: Express.Multer.File) {
-    if (!file) {
-      throw new BadRequestException('File is not an image');
-    } else {
-      const response = {
-        filePath: `http://localhost:3000/api/home/pictures/${file.filename}`,
-      };
-      return response;
-    }
-  }
   @Public()
   @Get('pictures/:filename')
   getPicture(@Param('filename') filename, @Res() res: Response) {

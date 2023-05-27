@@ -10,6 +10,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { MessageModule } from './message/message.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { HomeModule } from './home/home.module';
+import { UploadsModule } from './uploads/uploads.module';
 @Module({
   imports: [
     MulterModule.register({
@@ -25,6 +26,7 @@ import { HomeModule } from './home/home.module';
     MailModule,
     MessageModule,
     HomeModule,
+    UploadsModule,
   ],
   providers: [
     {
