@@ -1,15 +1,9 @@
-import {
-  createStyles,
-  Container,
-  Title,
-  Text,
-  Button,
-  rem,
-} from "@mantine/core";
+import { createStyles, Container, Title, Text, rem } from "@mantine/core";
 import { FetchQuery } from "../../utils/ApiCall";
 import { HERO } from "../../utils/ApiRoutes";
 import { useQuery } from "@tanstack/react-query";
 import ReactHtmlParser from "react-html-parser";
+import { Searchbar } from "./Searchbar";
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -82,6 +76,9 @@ const useStyles = createStyles((theme) => ({
       width: "100%",
     },
   },
+  search: {
+    backgroundPosition: "center",
+  },
 }));
 
 const heroSecton = async () => {
@@ -118,7 +115,7 @@ export function HeroSection() {
             <Text className={classes.description} mt={30}>
               {ReactHtmlParser(description)}
             </Text>
-            <Button
+            {/* <Button
               variant="gradient"
               size="xl"
               className={
@@ -128,7 +125,10 @@ export function HeroSection() {
               mt={40}
             >
               Get started
-            </Button>
+            </Button> */}
+            <div style={{ display: "flex" }}>
+              <Searchbar />
+            </div>
           </div>
         </div>
       </Container>
