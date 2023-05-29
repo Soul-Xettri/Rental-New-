@@ -7,6 +7,7 @@ import {
   SimpleGrid,
   Title,
 } from "@mantine/core";
+import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -36,7 +37,7 @@ const useStyles = createStyles((theme) => ({
 
   overlay: {
     position: "absolute",
-    top: "20%",
+    top: 0,
     left: 0,
     right: 0,
     bottom: 0,
@@ -113,126 +114,130 @@ export function PopularCity() {
         Find Properties in These Cities
       </Text>
       <SimpleGrid cols={4} spacing="30px">
-        <Card
-          p="lg"
-          shadow="lg"
-          className={classes.card}
-          radius="0"
-          component="a"
-          href="#"
-          target="_blank"
-        >
-          <div
-            className={classes.image}
-            style={{
-              backgroundImage: `url(https://wallsproperty.netlify.app/images/city4.jpg)`,
-              backgroundPosition: "center",
-            }}
-          />
-          <div className={classes.overlay} />
+        <Link to="#">
+          <Card
+            p="lg"
+            shadow="lg"
+            className={classes.card}
+            radius="0"
+            component="a"
+            target="_blank"
+          >
+            <div
+              className={classes.image}
+              style={{
+                backgroundImage: `url(https://wallsproperty.netlify.app/images/city4.jpg)`,
+                backgroundPosition: "center",
+              }}
+            />
+            <div className={classes.overlay} />
 
-          <div className={classes.content}>
-            <div className={classes.text}>
-              <Text size="lg" className={classes.title} weight={500}>
-                Pokhara
-              </Text>
+            <div className={classes.content}>
+              <div className={classes.text}>
+                <Text size="lg" className={classes.title} weight={500}>
+                  Pokhara
+                </Text>
 
-              <Text size="sm" className={classes.propertyCount}>
-                80 Properties
-              </Text>
+                <Text size="sm" className={classes.propertyCount}>
+                  80 Properties
+                </Text>
+              </div>
             </div>
-          </div>
-        </Card>
-        <Card
-          p="lg"
-          shadow="lg"
-          className={classes.card}
-          radius="0"
-          component="a"
-          href="#"
-          target="_blank"
-        >
-          <div
-            className={classes.image}
-            style={{
-              backgroundImage: `url(https://wallsproperty.netlify.app/images/city5.jpg)`,
-              backgroundPosition: "center",
-            }}
-          />
-          <div className={classes.overlay} />
+          </Card>
+        </Link>
+        <Link to="#">
+          <Card
+            p="lg"
+            shadow="lg"
+            className={classes.card}
+            radius="0"
+            component="a"
+            target="_blank"
+          >
+            <div
+              className={classes.image}
+              style={{
+                backgroundImage: `url(https://wallsproperty.netlify.app/images/city5.jpg)`,
+                backgroundPosition: "center",
+              }}
+            />
+            <div className={classes.overlay} />
 
-          <div className={classes.content}>
-            <div className={classes.text}>
-              <Text size="lg" className={classes.title} weight={500}>
-                Kathamndu
-              </Text>
+            <div className={classes.content}>
+              <div className={classes.text}>
+                <Text size="lg" className={classes.title} weight={500}>
+                  Kathamndu
+                </Text>
 
-              <Text size="sm" className={classes.propertyCount}>
-                80 Properties
-              </Text>
+                <Text size="sm" className={classes.propertyCount}>
+                  80 Properties
+                </Text>
+              </div>
             </div>
-          </div>
-        </Card>
-        <Card
-          p="lg"
-          shadow="lg"
-          className={classes.card}
-          radius="0"
-          component="a"
-          href="#"
-          target="_blank"
-        >
-          <div
-            className={classes.image}
-            style={{
-              backgroundImage: `url(https://wallsproperty.netlify.app/images/city6.jpg)`,
-              backgroundPosition: "center",
-            }}
-          />
-          <div className={classes.overlay} />
+          </Card>
+        </Link>
+        <Link to="#">
+          <Card
+            p="lg"
+            shadow="lg"
+            className={classes.card}
+            radius="0"
+            component="a"
+            target="_blank"
+          >
+            <div
+              className={classes.image}
+              style={{
+                backgroundImage: `url(https://wallsproperty.netlify.app/images/city6.jpg)`,
+                backgroundPosition: "center",
+              }}
+            />
+            <div className={classes.overlay} />
 
-          <div className={classes.content}>
-            <div className={classes.text}>
-              <Text size="lg" className={classes.title} weight={500}>
-                Bhirawa
-              </Text>
+            <div className={classes.content}>
+              <div className={classes.text}>
+                <Text size="lg" className={classes.title} weight={500}>
+                  Bhirawa
+                </Text>
 
-              <Text size="sm" className={classes.propertyCount}>
-                80 Properties
-              </Text>
+                <Text size="sm" className={classes.propertyCount}>
+                  80 Properties
+                </Text>
+              </div>
             </div>
-          </div>
-        </Card>
-        <Card
-          p="lg"
-          shadow="lg"
-          className={classes.card}
-          radius="0"
-          component="a"
-          href="#"
-          target="_blank"
-        >
-          <div
-            className={classes.image}
-            style={{
-              backgroundImage: `url(https://wallsproperty.netlify.app/images/city7.jpg)`,
-              backgroundPosition: "center",
-            }}
-          />
-          <div className={classes.overlay} />
+          </Card>
+        </Link>
+        <Link to="#">
+          <Card
+            p="lg"
+            shadow="lg"
+            className={classes.card}
+            radius="0"
+            component="a"
+            target="_blank"
+          >
+            <div
+              className={classes.image}
+              style={{
+                backgroundImage: `url(https://wallsproperty.netlify.app/images/city7.jpg)`,
+                backgroundPosition: "center",
+              }}
+            />
+            <div className={classes.overlay} />
 
-          <div className={classes.content}>
-            <div className={classes.text}>
-              <Text size="lg" className={classes.title} weight={500}>
-                Butwal
-              </Text>
+            <div className={classes.content}>
+              <div className={classes.text}>
+                <Text size="lg" className={classes.title} weight={500}>
+                  Butwal
+                </Text>
 
-              <Text size="sm" className={classes.propertyCount}>
-                80 Properties
-              </Text>
+                <Text size="sm" className={classes.propertyCount}>
+                  80 Properties
+                </Text>
+              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
+        </Link>
       </SimpleGrid>
     </>
   );
