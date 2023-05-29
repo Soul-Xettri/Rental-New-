@@ -1,11 +1,39 @@
+import { Container, createStyles } from "@mantine/core";
 import { HeroSection } from "./HeroSection";
+import { PopularCity } from "./PopularCity";
+
+const useStyles = createStyles((theme) => ({
+  Contenttop: {
+    paddingTop: `calc(${theme.spacing.xl} * 2)`,
+    paddingBottom: `calc(${theme.spacing.xl} * 2)`,
+
+    [theme.fn.smallerThan("md")]: {
+      marginRight: 0,
+    },
+  },
+
+  inner: {
+    display: "flex",
+    justifyContent: "center",
+
+    [theme.fn.smallerThan("md")]: {
+      flexDirection: "column",
+    },
+  },
+}));
 
 export default function HomePage() {
+  const { classes } = useStyles();
   return (
     <>
-      <div style={{}}>
-        <HeroSection />
-      </div>
+      <HeroSection />
+      <Container size="lg">
+        <div className={classes.inner}>
+          <div className={classes.Contenttop}>
+            <PopularCity />
+          </div>
+        </div>
+      </Container>
     </>
   );
 }

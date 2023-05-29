@@ -34,7 +34,7 @@ const useStyles = createStyles((theme) => ({
   content: {
     paddingTop: `calc(${theme.spacing.xl} * 2)`,
     paddingBottom: `calc(${theme.spacing.xl} * 2)`,
-    marginRight: `calc(${theme.spacing.xl} * 3)`,
+    // marginRight: `calc(${theme.spacing.xl} * 3)`,
 
     [theme.fn.smallerThan("md")]: {
       marginRight: 0,
@@ -126,9 +126,7 @@ export function HeroSection() {
             >
               Get started
             </Button> */}
-            <div style={{ display: "flex" }}>
-              <Searchbar />
-            </div>
+            <Searchbar />
           </div>
         </div>
       </Container>

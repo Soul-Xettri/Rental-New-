@@ -51,6 +51,7 @@ export function Searchbar() {
           textAlign: "center",
           padding: theme.spacing.xl,
           borderRadius: 0,
+          width: "100%",
           //   cursor: "pointer",
 
           //   "&:hover": {
