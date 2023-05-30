@@ -32,3 +32,32 @@
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
+
+.mantine-h5cr7z.mantine-Carousel-viewport {
+  height: 100% !important;
+}
+
+.mantine-i1rj5r.mantine-Carousel-container {
+  height: 250px;
+}
+
+button.mantine-UnstyledButton-root.mantine-Carousel-control.mantine-1u58w9r {
+  opacity: 1;
+  background-color: #1a2d3f;
+}
+
+button.mantine-UnstyledButton-root.mantine-Carousel-control.mantine-1u58w9r
+  svg {
+  opacity: 1;
+  color: #228be6;
+}
+.mantine-19swgkw.mantine-Carousel-indicators {
+  bottom: -2.6rem;
+}
+
+button.mantine-UnstyledButton-root.mantine-Carousel-indicator.mantine-ypy11r {
+  background-color: #228be6;
+}
+button.mantine-UnstyledButton-root.mantine-Carousel-indicator.mantine-1jkjqkp {
+  background-color: #228be6;
+}

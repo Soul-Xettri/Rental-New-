@@ -1,6 +1,7 @@
 import { Container, createStyles } from "@mantine/core";
 import { HeroSection } from "./HeroSection";
 import { PopularCity } from "./PopularCity";
+import { FeaturedProperty } from "./FeaturedProperty";
 
 const useStyles = createStyles((theme) => ({
   Contenttop: {
@@ -27,10 +28,17 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <Container size="lg">
+      <Container size="lg" style={{ paddingTop: "42px" }}>
         <div className={classes.inner}>
           <div className={classes.Contenttop}>
             <PopularCity />
+          </div>
+        </div>
+      </Container>
+      <Container size="lg">
+        <div className={classes.inner}>
+          <div className={classes.Contenttop}>
+            <FeaturedProperty />
           </div>
         </div>
       </Container>
