@@ -2,6 +2,7 @@ import { Container, createStyles } from "@mantine/core";
 import { HeroSection } from "./HeroSection";
 import { PopularCity } from "./PopularCity";
 import { FeaturedProperty } from "./FeaturedProperty";
+import { RecentProperty } from "./RecentProperty";
 
 const useStyles = createStyles((theme) => ({
   Contenttop: {
@@ -39,6 +40,13 @@ export default function HomePage() {
         <div className={classes.inner}>
           <div className={classes.Contenttop}>
             <FeaturedProperty />
+          </div>
+        </div>
+      </Container>
+      <Container size="lg">
+        <div className={classes.inner}>
+          <div className={classes.Contenttop}>
+            <RecentProperty />
           </div>
         </div>
       </Container>

@@ -144,7 +144,6 @@ function Card({
             position: "relative",
             background:
               "linear-gradient(rgba(0, 0, 0, 0) 10%, rgb(14, 14, 14,0.8))",
-            // boxShadow: "inset 0px 0px 47px 10px rgba(0,0,0,0.9)",
             width: "-webkit-fill-available",
             paddingBottom: "10px",
             transition: "all 0.4s ease 0s",
@@ -298,7 +297,7 @@ const data = [
     areaSquare: "1450 sq ft",
   },
 ];
-export function FeaturedProperty() {
+export function RecentProperty() {
   const autoplay = useRef(Autoplay({ delay: 4000, jump: false }));
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
@@ -321,7 +320,7 @@ export function FeaturedProperty() {
           },
         })}
       >
-        Featured Property
+        Recent Property
       </Title>
       <Text
         sx={(theme) => ({
