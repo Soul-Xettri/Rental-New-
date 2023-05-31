@@ -311,7 +311,7 @@ export function RecentProperty() {
       <Title
         order={1}
         sx={(theme) => ({
-          color: theme.colorScheme === "dark" ? theme.white : theme.colors.dark,
+          color: theme.colorScheme === "dark" ? theme.white : "#002247",
           fontWeight: 600,
           [theme.fn.smallerThan("md")]: {
             maxWidth: "100%",

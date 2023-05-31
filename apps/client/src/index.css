@@ -12,12 +12,32 @@
   opacity: 0.8;
 }
 
-.buttonSearchDark {
+.buttonDark {
   --tw-bg-opacity: 1;
   background-color: #1a2d3f;
   color: #228be6;
 }
 
+.buttonDark:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(0, 0, 0, 0.199);
+}
+
+.buttonWhite {
+  --tw-bg-opacity: 1;
+  background-color: #2563eb;
+}
+
+.buttonWhite:hover {
+  --tw-bg-opacity: 1;
+  background-color: #1d4ed8;
+}
+
+.buttonSearchDark {
+  --tw-bg-opacity: 1;
+  background-color: #1a2d3f;
+  color: #228be6;
+}
 .buttonSearchDark:hover {
   --tw-bg-opacity: 1;
   background-color: #1a2d3f;
@@ -58,6 +78,23 @@ button.mantine-UnstyledButton-root.mantine-Carousel-control.mantine-1u58w9r
 button.mantine-UnstyledButton-root.mantine-Carousel-indicator.mantine-ypy11r {
   background-color: #228be6;
 }
+
 button.mantine-UnstyledButton-root.mantine-Carousel-indicator.mantine-1jkjqkp {
   background-color: #228be6;
+}
+
+.whychooseuseroot {
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  opacity: 0.3;
+}
+
+@media only screen and (max-width: 768px) {
+  .tittle__lead {
+    margin-bottom: 20px;
+  }
 }

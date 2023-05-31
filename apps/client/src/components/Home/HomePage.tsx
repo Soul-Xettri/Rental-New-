@@ -3,6 +3,7 @@ import { HeroSection } from "./HeroSection";
 import { PopularCity } from "./PopularCity";
 import { FeaturedProperty } from "./FeaturedProperty";
 import { RecentProperty } from "./RecentProperty";
+import { WhyChooseUs } from "./WhyChooseUs";
 
 const useStyles = createStyles((theme) => ({
   Contenttop: {
@@ -50,6 +51,9 @@ export default function HomePage() {
           </div>
         </div>
       </Container>
+      <div className={classes.Contenttop}>
+        <WhyChooseUs />
+      </div>
     </>
   );
 }
