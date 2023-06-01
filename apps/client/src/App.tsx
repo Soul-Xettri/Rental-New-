@@ -15,7 +15,6 @@ import {
 } from "@mantine/core";
 import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 import { Footer } from "./components/Navbar/Footer";
-
 const queryClient = new QueryClient();
 
 function App() {
@@ -29,7 +28,7 @@ function App() {
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
 
-  useHotkeys([["mod+J", () => toggleColorScheme()]]);
+  useHotkeys([["d", () => toggleColorScheme()]]);
 
   if (colorScheme === "dark") {
     document.body.style.backgroundColor = "#1a1b1e";

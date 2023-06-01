@@ -29,9 +29,9 @@ const useStyles = createStyles((theme) => ({
     },
 
     "&[data-active]": {
-      backgroundColor: theme.colorScheme === "dark" ? "#1a2d3f" : "#e7f5ff",
-      borderColor: theme.colorScheme === "dark" ? "#1a2d3f" : "#e7f5ff",
-      color: "#228be6",
+      backgroundColor: theme.colorScheme === "dark" ? "#1a2d3f" : "#2563eb",
+      borderColor: theme.colorScheme === "dark" ? "#1a2d3f" : "#2563eb",
+      color: theme.colorScheme === "dark" ? "#228be6" : theme.white,
     },
   },
 }));

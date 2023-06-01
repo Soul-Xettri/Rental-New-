@@ -4,12 +4,13 @@ import { PopularCity } from "./PopularCity";
 import { FeaturedProperty } from "./FeaturedProperty";
 import { RecentProperty } from "./RecentProperty";
 import { WhyChooseUs } from "./WhyChooseUs";
+import { Team } from "./Team";
 
 const useStyles = createStyles((theme) => ({
   Contenttop: {
     paddingTop: `calc(${theme.spacing.xl} * 2)`,
     paddingBottom: `calc(${theme.spacing.xl} * 2)`,
-
+    width: "-webkit-fill-available",
     [theme.fn.smallerThan("md")]: {
       marginRight: 0,
     },
@@ -54,6 +55,13 @@ export default function HomePage() {
       <div className={classes.Contenttop}>
         <WhyChooseUs />
       </div>
+      <Container size="lg">
+        <div className={classes.inner}>
+          <div className={classes.Contenttop}>
+            <Team />{" "}
+          </div>
+        </div>
+      </Container>
     </>
   );
 }

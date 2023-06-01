@@ -20,7 +20,7 @@
 
 .buttonDark:hover {
   --tw-bg-opacity: 1;
-  background-color: rgba(0, 0, 0, 0.199);
+  background-color: #051c36;
 }
 
 .buttonWhite {
@@ -40,17 +40,17 @@
 }
 .buttonSearchDark:hover {
   --tw-bg-opacity: 1;
-  background-color: #1a2d3f;
+  background-color: #051c36;
 }
 
 .buttonSearchWhite {
   --tw-bg-opacity: 1;
-  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+  background-color: #2563eb;
 }
 
 .buttonSearchWhite:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+  background-color: #1d4ed8;
 }
 
 .mantine-h5cr7z.mantine-Carousel-viewport {
@@ -97,4 +97,36 @@ button.mantine-UnstyledButton-root.mantine-Carousel-indicator.mantine-1jkjqkp {
   .tittle__lead {
     margin-bottom: 20px;
   }
+}
+
+@media only screen and (max-width: 375px) {
+  .teamcard {
+    height: "17.9375rem" !important;
+    width: "17.9375rem" !important;
+  }
+}
+
+.desk {
+  text-align: center;
+  /* opacity: 0; */
+  transform: translate(0px, -200px);
+
+  transition: all 0.4s ease 0s;
+  position: relative;
+  padding: 0 20px;
+}
+
+.socials {
+  display: flex;
+  position: absolute;
+  /* opacity: 0; */
+  top: 50%;
+  left: 50%;
+  transition: all 0.4s ease 0s;
+  transform: translate(-50%, 800%);
+  font-size: 15px;
+}
+
+.mainCardWhole {
+  transition: all 0.4s ease 0s;
 }
