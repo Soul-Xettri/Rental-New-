@@ -16,12 +16,12 @@ import { MantineLogo } from "@mantine/ds";
 const useStyles = createStyles((theme) => ({
   footer: {
     marginTop: rem(120),
-    paddingTop: `calc(${theme.spacing.xl} * 2)`,
-    paddingBottom: `calc(${theme.spacing.xl} * 2)`,
-    backgroundColor:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[6]
-        : theme.colors.gray[0],
+    backgroundImage: "url(https://wallsproperty.netlify.app/images/bg18.jpg)",
+    backgroundPosition: "center center",
+    // backgroundColor:
+    //   theme.colorScheme === "dark"
+    //     ? theme.colors.dark[6]
+    //     : theme.colors.gray[0],
     borderTop: `${rem(1)} solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2]
     }`,
@@ -44,6 +44,13 @@ const useStyles = createStyles((theme) => ({
       marginTop: theme.spacing.xs,
       textAlign: "center",
     },
+  },
+
+  footerWrap: {
+    paddingTop: `calc(${theme.spacing.xl} * 5)`,
+    paddingBottom: `calc(${theme.spacing.xs} * 3)`,
+    backgroundColor: " rgba(18,18,18,0.93)",
+    opacity: 0.9,
   },
 
   inner: {
@@ -89,7 +96,7 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 700,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     marginBottom: `calc(${theme.spacing.xs} / 2)`,
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
+    color: theme.colorScheme === "dark" ? theme.white : theme.white,
   },
 
   afterFooter: {
@@ -148,32 +155,35 @@ export function Footer({ data }: FooterLinksProps) {
 
   return (
     <footer className={classes.footer}>
-      <Container className={classes.inner}>
-        <div className={classes.logo}>
-          <MantineLogo size={30} />
-          <Text size="xs" color="dimmed" className={classes.description}>
-            Build fully functional accessible web applications faster than ever
+      <div className={classes.footerWrap}>
+        <Container className={classes.inner}>
+          <div className={classes.logo}>
+            <MantineLogo size={30} />
+            <Text size="xs" color="dimmed" className={classes.description}>
+              Build fully functional accessible web applications faster than
+              ever
+            </Text>
+          </div>
+          <div className={classes.groups}>{groups}</div>
+        </Container>
+        <Container className={classes.afterFooter}>
+          <Text color="dimmed" size="sm">
+            © 2020 mantine.dev. All rights reserved.
           </Text>
-        </div>
-        <div className={classes.groups}>{groups}</div>
-      </Container>
-      <Container className={classes.afterFooter}>
-        <Text color="dimmed" size="sm">
-          © 2020 mantine.dev. All rights reserved.
-        </Text>
 
-        <Group spacing={0} className={classes.social} position="right" noWrap>
-          <ActionIcon size="lg">
-            <IconBrandTwitter size="1.05rem" stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon size="lg">
-            <IconBrandYoutube size="1.05rem" stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon size="lg">
-            <IconBrandInstagram size="1.05rem" stroke={1.5} />
-          </ActionIcon>
-        </Group>
-      </Container>
+          <Group spacing={0} className={classes.social} position="right" noWrap>
+            <ActionIcon size="lg">
+              <IconBrandTwitter size="1.05rem" stroke={1.5} />
+            </ActionIcon>
+            <ActionIcon size="lg">
+              <IconBrandYoutube size="1.05rem" stroke={1.5} />
+            </ActionIcon>
+            <ActionIcon size="lg">
+              <IconBrandInstagram size="1.05rem" stroke={1.5} />
+            </ActionIcon>
+          </Group>
+        </Container>
+      </div>
     </footer>
   );
 }

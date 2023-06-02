@@ -124,6 +124,9 @@ import {
   Text,
   rem,
   Button,
+  em,
+  Image,
+  SimpleGrid,
 } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
@@ -131,10 +134,10 @@ const useStyles = createStyles((theme) => ({
     // backgroundColor: "#11284b",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    backgroundImage:
-      theme.colorScheme === "dark"
-        ? "linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%), url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1080&q=80)"
-        : "linear-gradient(180deg, rgba(255,255,255,0.01) 0%, #1d293e 100%), url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1080&q=80)",
+    // backgroundImage:
+    //   theme.colorScheme === "dark"
+    //     ? "linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%), url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1080&q=80)"
+    //     : "linear-gradient(180deg, rgba(255,255,255,0.01) 0%, #1d293e 100%), url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1080&q=80)",
     paddingTop: `calc(${theme.spacing.xl} * 3)`,
     paddingBottom: `calc(${theme.spacing.xl} * 3)`,
   },
@@ -149,9 +152,9 @@ const useStyles = createStyles((theme) => ({
   },
 
   image: {
-    [theme.fn.smallerThan("md")]: {
-      display: "none",
-    },
+    width: "100%",
+    objectFit: "cover",
+    transition: "0.5 ease all",
   },
 
   content: {
@@ -202,6 +205,55 @@ const useStyles = createStyles((theme) => ({
   search: {
     backgroundPosition: "center",
   },
+  // imageTop: {
+  //   position: "relative",
+  //   width: "100%",
+  //   paddingRight: "15px",
+  //   paddingLeft: "15px",
+  //   [`@media  (max-width: ${em(992)})`]: {
+  //     height: rem(401.6),
+  //     width: rem(300),
+  //   },
+  // },
+  aboutImage: {
+    position: "relative",
+
+    [`@media (max-width: ${em(575)}) and (min-width: ${em(320)})`]: {
+      minHeight: "initial",
+    },
+  },
+  aboutImageTop: {
+    position: "absolute",
+    width: "50%",
+    left: 0,
+    bottom: "10%",
+    [`@media (max-width: ${em(575)}) and (min-width: ${em(320)})`]: {
+      position: "relative",
+      width: "100%",
+      bottom: "0",
+      marginBottom: "15px",
+      transform: "translateY(0)",
+      border: 0,
+    },
+    zIndex: 1,
+  },
+  aboutImageBottom: {
+    position: "relative",
+    width: "80%",
+    right: "-20%",
+    [`@media (max-width: ${em(575)}) and (min-width: ${em(320)})`]: {
+      position: "relative",
+      width: "100%",
+      right: "0%",
+    },
+  },
+  aboutImageover: {
+    background: "#ffc31d",
+    overflow: "hidden",
+    position: "relative",
+    display: "inline-block",
+    margin: "0 -1.5px",
+  },
 }));
 
 export function WhyChooseUs() {
@@ -222,43 +274,78 @@ export function WhyChooseUs() {
       <Container size="lg">
         <div className={classes.inner}>
           <div className={classes.content}>
-            <Title
-              order={1}
-              sx={(theme) => ({
-                color: theme.white,
-                fontWeight: 600,
-                [theme.fn.smallerThan("md")]: {
-                  maxWidth: "100%",
-                  fontSize: rem(34),
-                  lineHeight: 1.15,
+            <SimpleGrid
+              cols={2}
+              spacing="0"
+              verticalSpacing="50px"
+              breakpoints={[
+                {
+                  maxWidth: "70rem",
+                  cols: 2,
+                  spacing: "60px",
+                  verticalSpacing: "60px",
                 },
-              })}
+                { maxWidth: "48rem", cols: 1, spacing: "50px" },
+                { maxWidth: "36rem", cols: 1, spacing: "sm" },
+              ]}
+              style={{
+                justifyItems: "center",
+              }}
             >
-              Why Choose Us?
-            </Title>
+              <div>
+                <Title
+                  order={1}
+                  sx={(theme) => ({
+                    color: theme.white,
+                    fontWeight: 600,
+                    [theme.fn.smallerThan("md")]: {
+                      maxWidth: "100%",
+                      fontSize: rem(34),
+                      lineHeight: 1.15,
+                    },
+                  })}
+                >
+                  Why Choose Us?
+                </Title>
 
-            <Text className={classes.description} mt={30}>
-              The first step in selling your property is to get a valuation from
-              local experts. They will inspect your home and take into account
-              its unique features, the area and market conditions before
-              providing you with the most accurate valuation.
-            </Text>
+                <Text className={classes.description} mt={30}>
+                  The first step in selling your property is to get a valuation
+                  from local experts. They will inspect your home and take into
+                  account its unique features, the area and market conditions
+                  before providing you with the most accurate valuation.
+                </Text>
 
-            <Text className={classes.description} mt={20}>
-              Discover why Rental is the top choice for all your rental and
-              buying needs. With extensive industry experience, a vast network
-              of connections, and a commitment to quality assurance, we provide
-              personalized service and transparent communication.
-            </Text>
-            <Button
-              type="submit"
-              style={{ borderRadius: 0 }}
-              className={`w-sm py-2 px-4   ${button}`}
-              size="md"
-              mt={40}
-            >
-              Read More &nbsp; {">"}
-            </Button>
+                <Text className={classes.description} mt={20}>
+                  Discover why Rental is the top choice for all your rental and
+                  buying needs. With extensive industry experience, a vast
+                  network of connections, and a commitment to quality assurance,
+                  we provide personalized service and transparent communication.
+                </Text>
+                <Button
+                  type="submit"
+                  style={{ borderRadius: 0 }}
+                  className={`w-sm py-2 px-4   ${button}`}
+                  size="md"
+                  mt={40}
+                >
+                  Read More &nbsp; {">"}
+                </Button>
+              </div>
+              <div className={classes.aboutImage}>
+                <div className={classes.aboutImageTop}>
+                  <Image
+                    src="https://wallsproperty.netlify.app/images/gallery.jpg"
+                    className={classes.image}
+                  />
+                </div>
+                <div className={classes.aboutImageBottom}>
+                  <Image
+                    src="https://wallsproperty.netlify.app/images/gallery3.jpg "
+                    className={classes.image}
+                  />
+                </div>
+              </div>
+            </SimpleGrid>
           </div>
         </div>
       </Container>

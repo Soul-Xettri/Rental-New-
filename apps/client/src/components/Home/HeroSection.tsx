@@ -15,6 +15,21 @@ const useStyles = createStyles((theme) => ({
     paddingTop: `calc(${theme.spacing.xl} * 3)`,
     paddingBottom: `calc(${theme.spacing.xl} * 3)`,
   },
+  headerbg: {
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    // backgroundImage: " url(https://wallsproperty.netlify.app/images/bg7.jpg)",
+    backgroundAttachment: "fixed",
+    WebkitBackgroundSize: "cover",
+    position: "relative",
+    backgroundColor: "#d1e6f9",
+    height: "110vh",
+    minHeight: "25rem",
+    width: "100%",
+    padding: "0",
+    margin: "0",
+    zIndex: 2,
+  },
 
   inner: {
     display: "flex",
@@ -43,6 +58,7 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     color: theme.white,
+    position: "relative",
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     fontWeight: 900,
     lineHeight: 1.05,
@@ -79,6 +95,14 @@ const useStyles = createStyles((theme) => ({
   search: {
     backgroundPosition: "center",
   },
+  overlay: {
+    backgroundColor: "rgba(27,33,39,0.5)",
+    position: "absolute",
+    height: "100%",
+    width: "100%",
+    top: 0,
+    right: 0,
+  },
 }));
 
 const heroSecton = async () => {
@@ -93,29 +117,34 @@ export function HeroSection() {
   const subHeading = data?.data?.subHeading;
   const description = data?.data?.description;
   return (
-    <div
-      className={classes.root}
+    <header
+      className={classes.headerbg}
       style={{ backgroundImage: `url(${data?.data.image})` }}
     >
-      <Container size="lg">
-        <div className={classes.inner}>
-          <div className={classes.content}>
-            <Title className={classes.title}>
-              <Text
-                component="span"
-                inherit
-                variant="gradient"
-                gradient={{ from: "pink", to: "yellow" }}
-              >
-                {ReactHtmlParser(heading)}
-              </Text>{" "}
-              {ReactHtmlParser(subHeading)}
-            </Title>
+      <div className={classes.overlay} />
+      <div
+        className={classes.root}
+        // style={{ backgroundImage: `url(${data?.data.image})` }}
+      >
+        <Container size="lg">
+          <div className={classes.inner}>
+            <div className={classes.content}>
+              <Title className={classes.title}>
+                <Text
+                  component="span"
+                  inherit
+                  variant="gradient"
+                  gradient={{ from: "pink", to: "yellow" }}
+                >
+                  {ReactHtmlParser(heading)}
+                </Text>{" "}
+                {ReactHtmlParser(subHeading)}
+              </Title>
 
-            <Text className={classes.description} mt={30}>
-              {ReactHtmlParser(description)}
-            </Text>
-            {/* <Button
+              <Text className={classes.description} mt={30}>
+                {ReactHtmlParser(description)}
+              </Text>
+              {/* <Button
               variant="gradient"
               size="xl"
               className={
@@ -126,10 +155,11 @@ export function HeroSection() {
             >
               Get started
             </Button> */}
-            <Searchbar />
+              <Searchbar />
+            </div>
           </div>
-        </div>
-      </Container>
-    </div>
+        </Container>
+      </div>
+    </header>
   );
 }
