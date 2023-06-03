@@ -46,17 +46,9 @@ function App() {
           >
             <MantineProvider theme={{ colorScheme }}>
               <Paper p="0" radius="0">
-                <TopHeader
-                  user={{
-                    name: "Soul-Xettri",
-                    image:
-                      "https://scontent.fktm8-1.fna.fbcdn.net/v/t39.30808-6/346448560_620327659995815_1613930564586093809_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=XTYQ3DKS0tUAX8VAy_D&_nc_ht=scontent.fktm8-1.fna&oh=00_AfANNc6RKNb49r8fn4gJyMnTmrS2bVHV88278mZPFHCDaA&oe=6474D08B",
-                  }}
-                />
-
                 {/* <LoadingBar height={3} color="#f11946" progress={progress} /> */}
                 <Routes>
-                  <Route path="/home" element={<HomePage />} />
+                  <Route path="/" element={<HomePage />} />
                   <Route path="/auth" element={<Authentication />} />
                   <Route
                     path="/auth/forgot-password"

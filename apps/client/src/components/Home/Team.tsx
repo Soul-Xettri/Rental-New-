@@ -262,220 +262,214 @@ export function Team() {
             justifyItems: "center",
           }}
         >
-          <Link to="#">
-            <Container className={classes.hovercard}>
-              <Paper>
-                <div style={{ position: "relative" }}>
-                  <div className={classes.card2}>
-                    <div className="desk">
-                      <h5 className={classes.cardTitle}>Hi There !</h5>
-                      <p className={classes.cardDesc}>
-                        I am Senior Agent Property
-                      </p>
-                      <Button
-                        type="submit"
-                        style={{ borderRadius: 0 }}
-                        className={`w-sm py-2 px-4   ${button}`}
-                        size="md"
-                        mt={10}
-                      >
-                        Agent Profile
-                      </Button>
-                    </div>
-                    <div className="socials">
-                      {/* <IconBrandFacebook style={{ color: "black " }} /> */}
-                      <Link to={"#"} className={classes.iconlink}>
-                        <FontAwesomeIcon
-                          icon={faFacebookF}
-                          style={{ marginRight: "0.5rem" }}
-                        />
-                      </Link>
-                      <Link to={"#"} className={classes.iconlink}>
-                        <FontAwesomeIcon
-                          icon={faTwitter}
-                          style={{ marginRight: "0.5rem" }}
-                        />
-                      </Link>
-                      <Link to={"#"} className={classes.iconlink}>
-                        <FontAwesomeIcon icon={faGooglePlusG} />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div className="mainCardWhole">
-                  <Card
-                    p="lg"
-                    shadow="lg"
-                    className={classes.card}
-                    radius="0"
-                    component="a"
-                    target="_blank"
-                  >
-                    <div
-                      className={classes.image}
-                      style={{
-                        backgroundImage: `url(https://wallsproperty.netlify.app/images/team12.jpg)`,
-                        backgroundPosition: "center",
-                      }}
+          <Container className={classes.hovercard}>
+            <Paper>
+              <div style={{ position: "relative" }}>
+                <div className={classes.card2}>
+                  <div className="desk">
+                    <h5 className={classes.cardTitle}>Hi There !</h5>
+                    <p className={classes.cardDesc}>
+                      I am Senior Agent Property
+                    </p>
+                    <Button
+                      type="submit"
+                      style={{ borderRadius: 0 }}
+                      className={`w-sm py-2 px-4   ${button}`}
+                      size="md"
+                      mt={10}
                     >
-                      {/* <div className={classes.overlay} /> */}
-                    </div>
-                  </Card>
-                  <div className={classes.content}>
-                    <Text size="lg" className={classes.title} weight={500}>
-                      Felica Angel
-                    </Text>
-
-                    <Text size="sm" style={{ letterSpacing: "1px" }}>
-                      Agent Real Estate
-                    </Text>
+                      Agent Profile
+                    </Button>
+                  </div>
+                  <div className="socials">
+                    {/* <IconBrandFacebook style={{ color: "black " }} /> */}
+                    <Link to={"#"} className={classes.iconlink}>
+                      <FontAwesomeIcon
+                        icon={faFacebookF}
+                        style={{ marginRight: "0.5rem" }}
+                      />
+                    </Link>
+                    <Link to={"#"} className={classes.iconlink}>
+                      <FontAwesomeIcon
+                        icon={faTwitter}
+                        style={{ marginRight: "0.5rem" }}
+                      />
+                    </Link>
+                    <Link to={"#"} className={classes.iconlink}>
+                      <FontAwesomeIcon icon={faGooglePlusG} />
+                    </Link>
                   </div>
                 </div>
-              </Paper>
-            </Container>
-          </Link>
-          <Link to="#">
-            <Container className={classes.hovercard}>
-              <Paper>
-                <div style={{ position: "relative" }}>
-                  <div className={classes.card2}>
-                    <div className="desk">
-                      <h5 className={classes.cardTitle}>Hi There !</h5>
-                      <p className={classes.cardDesc}>
-                        I am Senior Agent Property
-                      </p>
-                      <Button
-                        type="submit"
-                        style={{ borderRadius: 0 }}
-                        className={`w-sm py-2 px-4   ${button}`}
-                        size="md"
-                        mt={10}
-                      >
-                        Agent Profile
-                      </Button>
-                    </div>
-                    <div className="socials">
-                      {/* <IconBrandFacebook style={{ color: "black " }} /> */}
-                      <Link to={"#"} className={classes.iconlink}>
-                        <FontAwesomeIcon
-                          icon={faFacebookF}
-                          style={{ marginRight: "0.5rem" }}
-                        />
-                      </Link>
-                      <Link to={"#"} className={classes.iconlink}>
-                        <FontAwesomeIcon
-                          icon={faTwitter}
-                          style={{ marginRight: "0.5rem" }}
-                        />
-                      </Link>
-                      <Link to={"#"} className={classes.iconlink}>
-                        <FontAwesomeIcon icon={faGooglePlusG} />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div className="mainCardWhole">
-                  <Card
-                    p="lg"
-                    shadow="lg"
-                    className={classes.card}
-                    radius="0"
-                    component="a"
-                    target="_blank"
+              </div>
+              <div className="mainCardWhole">
+                <Card
+                  p="lg"
+                  shadow="lg"
+                  className={classes.card}
+                  radius="0"
+                  component="a"
+                  target="_blank"
+                >
+                  <div
+                    className={classes.image}
+                    style={{
+                      backgroundImage: `url(https://wallsproperty.netlify.app/images/team12.jpg)`,
+                      backgroundPosition: "center",
+                    }}
                   >
-                    <div
-                      className={classes.image}
-                      style={{
-                        backgroundImage: `url(https://wallsproperty.netlify.app/images/team11.jpg)`,
-                        backgroundPosition: "center",
-                      }}
-                    />
                     {/* <div className={classes.overlay} /> */}
-                  </Card>
-                  <div className={classes.content}>
-                    <Text size="lg" className={classes.title} weight={500}>
-                      Martin Smith
-                    </Text>
+                  </div>
+                </Card>
+                <div className={classes.content}>
+                  <Text size="lg" className={classes.title} weight={500}>
+                    Felica Angel
+                  </Text>
 
-                    <Text size="sm" style={{ letterSpacing: "1px" }}>
-                      Agent Real Estate
-                    </Text>
+                  <Text size="sm" style={{ letterSpacing: "1px" }}>
+                    Agent Real Estate
+                  </Text>
+                </div>
+              </div>
+            </Paper>
+          </Container>
+          <Container className={classes.hovercard}>
+            <Paper>
+              <div style={{ position: "relative" }}>
+                <div className={classes.card2}>
+                  <div className="desk">
+                    <h5 className={classes.cardTitle}>Hi There !</h5>
+                    <p className={classes.cardDesc}>
+                      I am Senior Agent Property
+                    </p>
+                    <Button
+                      type="submit"
+                      style={{ borderRadius: 0 }}
+                      className={`w-sm py-2 px-4   ${button}`}
+                      size="md"
+                      mt={10}
+                    >
+                      Agent Profile
+                    </Button>
+                  </div>
+                  <div className="socials">
+                    {/* <IconBrandFacebook style={{ color: "black " }} /> */}
+                    <Link to={"#"} className={classes.iconlink}>
+                      <FontAwesomeIcon
+                        icon={faFacebookF}
+                        style={{ marginRight: "0.5rem" }}
+                      />
+                    </Link>
+                    <Link to={"#"} className={classes.iconlink}>
+                      <FontAwesomeIcon
+                        icon={faTwitter}
+                        style={{ marginRight: "0.5rem" }}
+                      />
+                    </Link>
+                    <Link to={"#"} className={classes.iconlink}>
+                      <FontAwesomeIcon icon={faGooglePlusG} />
+                    </Link>
                   </div>
                 </div>
-              </Paper>
-            </Container>
-          </Link>
-          <Link to="#">
-            <Container className={classes.hovercard}>
-              <Paper>
-                <div style={{ position: "relative" }}>
-                  <div className={classes.card2}>
-                    <div className="desk">
-                      <h5 className={classes.cardTitle}>Hi There !</h5>
-                      <p className={classes.cardDesc}>
-                        I am Senior Agent Property
-                      </p>
-                      <Button
-                        type="submit"
-                        style={{ borderRadius: 0 }}
-                        className={`w-sm py-2 px-4   ${button}`}
-                        size="md"
-                        mt={10}
-                      >
-                        Agent Profile
-                      </Button>
-                    </div>
-                    <div className="socials">
-                      {/* <IconBrandFacebook style={{ color: "black " }} /> */}
-                      <Link to={"#"} className={classes.iconlink}>
-                        <FontAwesomeIcon
-                          icon={faFacebookF}
-                          style={{ marginRight: "0.5rem" }}
-                        />
-                      </Link>
-                      <Link to={"#"} className={classes.iconlink}>
-                        <FontAwesomeIcon
-                          icon={faTwitter}
-                          style={{ marginRight: "0.5rem" }}
-                        />
-                      </Link>
-                      <Link to={"#"} className={classes.iconlink}>
-                        <FontAwesomeIcon icon={faGooglePlusG} />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div className="mainCardWhole">
-                  <Card
-                    p="lg"
-                    shadow="lg"
-                    className={classes.card}
-                    radius="0"
-                    component="a"
-                    target="_blank"
-                  >
-                    <div
-                      className={classes.image}
-                      style={{
-                        backgroundImage: `url(https://wallsproperty.netlify.app/images/team13.jpg)`,
-                        backgroundPosition: "center",
-                      }}
-                    />
-                    {/* <div className={classes.overlay} /> */}
-                  </Card>
-                  <div className={classes.content}>
-                    <Text size="lg" className={classes.title} weight={500}>
-                      Sara libson
-                    </Text>
+              </div>
+              <div className="mainCardWhole">
+                <Card
+                  p="lg"
+                  shadow="lg"
+                  className={classes.card}
+                  radius="0"
+                  component="a"
+                  target="_blank"
+                >
+                  <div
+                    className={classes.image}
+                    style={{
+                      backgroundImage: `url(https://wallsproperty.netlify.app/images/team11.jpg)`,
+                      backgroundPosition: "center",
+                    }}
+                  />
+                  {/* <div className={classes.overlay} /> */}
+                </Card>
+                <div className={classes.content}>
+                  <Text size="lg" className={classes.title} weight={500}>
+                    Martin Smith
+                  </Text>
 
-                    <Text size="sm" style={{ letterSpacing: "1px" }}>
-                      Agent Real Estate
-                    </Text>
+                  <Text size="sm" style={{ letterSpacing: "1px" }}>
+                    Agent Real Estate
+                  </Text>
+                </div>
+              </div>
+            </Paper>
+          </Container>
+          <Container className={classes.hovercard}>
+            <Paper>
+              <div style={{ position: "relative" }}>
+                <div className={classes.card2}>
+                  <div className="desk">
+                    <h5 className={classes.cardTitle}>Hi There !</h5>
+                    <p className={classes.cardDesc}>
+                      I am Senior Agent Property
+                    </p>
+                    <Button
+                      type="submit"
+                      style={{ borderRadius: 0 }}
+                      className={`w-sm py-2 px-4   ${button}`}
+                      size="md"
+                      mt={10}
+                    >
+                      Agent Profile
+                    </Button>
+                  </div>
+                  <div className="socials">
+                    {/* <IconBrandFacebook style={{ color: "black " }} /> */}
+                    <Link to={"#"} className={classes.iconlink}>
+                      <FontAwesomeIcon
+                        icon={faFacebookF}
+                        style={{ marginRight: "0.5rem" }}
+                      />
+                    </Link>
+                    <Link to={"#"} className={classes.iconlink}>
+                      <FontAwesomeIcon
+                        icon={faTwitter}
+                        style={{ marginRight: "0.5rem" }}
+                      />
+                    </Link>
+                    <Link to={"#"} className={classes.iconlink}>
+                      <FontAwesomeIcon icon={faGooglePlusG} />
+                    </Link>
                   </div>
                 </div>
-              </Paper>
-            </Container>
-          </Link>
+              </div>
+              <div className="mainCardWhole">
+                <Card
+                  p="lg"
+                  shadow="lg"
+                  className={classes.card}
+                  radius="0"
+                  component="a"
+                  target="_blank"
+                >
+                  <div
+                    className={classes.image}
+                    style={{
+                      backgroundImage: `url(https://wallsproperty.netlify.app/images/team13.jpg)`,
+                      backgroundPosition: "center",
+                    }}
+                  />
+                  {/* <div className={classes.overlay} /> */}
+                </Card>
+                <div className={classes.content}>
+                  <Text size="lg" className={classes.title} weight={500}>
+                    Sara libson
+                  </Text>
+
+                  <Text size="sm" style={{ letterSpacing: "1px" }}>
+                    Agent Real Estate
+                  </Text>
+                </div>
+              </div>
+            </Paper>
+          </Container>
         </SimpleGrid>
       </div>
     </>

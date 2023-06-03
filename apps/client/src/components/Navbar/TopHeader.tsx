@@ -213,7 +213,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
             className={classes.hiddenMobile}
           >
             <NavLink
-              to="/home"
+              to="/"
               className={classes.link}
               style={({ isActive }) => {
                 return {

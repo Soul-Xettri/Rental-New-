@@ -154,7 +154,11 @@ const useStyles = createStyles((theme) => ({
   image: {
     width: "100%",
     objectFit: "cover",
-    transition: "0.5 ease all",
+    transition: "transform 500ms ease",
+    "&:hover": {
+      opacity: 0.6,
+      transform: "scale(1.1,1.1)",
+    },
   },
 
   content: {
@@ -168,7 +172,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   title: {
-    color: theme.white,
+    color: theme.colorScheme === "dark" ? theme.white : "#002247",
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     fontWeight: 900,
     lineHeight: 1.05,
@@ -183,7 +187,8 @@ const useStyles = createStyles((theme) => ({
   },
 
   description: {
-    color: theme.white,
+    color: theme.colorScheme === "dark" ? theme.white : "#495057",
+
     opacity: 0.75,
     maxWidth: rem(700),
 
@@ -221,6 +226,10 @@ const useStyles = createStyles((theme) => ({
     [`@media (max-width: ${em(575)}) and (min-width: ${em(320)})`]: {
       minHeight: "initial",
     },
+    [`@media  (min-width: ${em(768)}) and (max-width: ${em(948)}) `]: {
+      display: "flex",
+      justifyContent: "center",
+    },
   },
   aboutImageTop: {
     position: "absolute",
@@ -236,6 +245,11 @@ const useStyles = createStyles((theme) => ({
       border: 0,
     },
     zIndex: 1,
+    [`@media  (min-width: ${em(768)}) and (max-width: ${em(948)}) `]: {
+      width: "75%",
+      bottom: "0%",
+      left: "auto",
+    },
   },
   aboutImageBottom: {
     position: "relative",
@@ -246,13 +260,16 @@ const useStyles = createStyles((theme) => ({
       width: "100%",
       right: "0%",
     },
+    [`@media  (min-width: ${em(768)}) and (max-width: ${em(948)}) `]: {
+      width: "75%",
+      right: "0%",
+    },
   },
-  aboutImageover: {
+  hoverCard: {
     background: "#ffc31d",
     overflow: "hidden",
     position: "relative",
     display: "inline-block",
-    margin: "0 -1.5px",
   },
 }));
 
@@ -296,7 +313,9 @@ export function WhyChooseUs() {
                 <Title
                   order={1}
                   sx={(theme) => ({
-                    color: theme.white,
+                    color:
+                      theme.colorScheme === "dark" ? theme.white : "#002247",
+
                     fontWeight: 600,
                     [theme.fn.smallerThan("md")]: {
                       maxWidth: "100%",
@@ -331,18 +350,23 @@ export function WhyChooseUs() {
                   Read More &nbsp; {">"}
                 </Button>
               </div>
+
               <div className={classes.aboutImage}>
                 <div className={classes.aboutImageTop}>
-                  <Image
-                    src="https://wallsproperty.netlify.app/images/gallery.jpg"
-                    className={classes.image}
-                  />
+                  <div className={classes.hoverCard}>
+                    <Image
+                      src="https://wallsproperty.netlify.app/images/gallery.jpg"
+                      className={classes.image}
+                    />
+                  </div>
                 </div>
                 <div className={classes.aboutImageBottom}>
-                  <Image
-                    src="https://wallsproperty.netlify.app/images/gallery3.jpg "
-                    className={classes.image}
-                  />
+                  <div className={classes.hoverCard}>
+                    <Image
+                      src="https://wallsproperty.netlify.app/images/gallery3.jpg "
+                      className={classes.image}
+                    />
+                  </div>
                 </div>
               </div>
             </SimpleGrid>
