@@ -22,6 +22,7 @@ import {
   ActionIcon,
   useMantineColorScheme,
   Paper,
+  keyframes,
 } from "@mantine/core";
 import { MantineLogo } from "@mantine/ds";
 import { useDisclosure } from "@mantine/hooks";
@@ -48,6 +49,11 @@ import {
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
+const smoothScroll = keyframes({
+  "0%": { transform: "translateY(-40px)" },
+  "100%": { transform: "translateY(0px)" },
+});
+
 const useStyles = createStyles((theme) => ({
   link: {
     display: "block",
@@ -55,19 +61,42 @@ const useStyles = createStyles((theme) => ({
     padding: `${rem(8)} ${rem(12)}`,
     borderRadius: theme.radius.sm,
     textDecoration: "none",
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
+    color: theme.white,
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
-    "&:hover": {
+    [theme.fn.smallerThan("sm")]: {
+      height: rem(42),
+      display: "flex",
+      alignItems: "center",
+      width: "100%",
+    },
+    ...theme.fn.hover({
+      backgroundColor: "transparent",
+    }),
+  },
+  linkFixed: {
+    display: "block",
+    lineHeight: 1,
+    padding: `${rem(8)} ${rem(12)}`,
+    borderRadius: theme.radius.sm,
+    textDecoration: "none",
+    color: theme.colorScheme === "dark" ? theme.white : theme.black,
+    fontSize: theme.fontSizes.sm,
+    fontWeight: 500,
+
+    [theme.fn.smallerThan("sm")]: {
+      height: rem(42),
+      display: "flex",
+      alignItems: "center",
+      width: "100%",
+    },
+    ...theme.fn.hover({
       backgroundColor:
         theme.colorScheme === "dark"
           ? theme.colors.dark[6]
-          : theme.colors.gray[0],
-    },
+          : theme.colors.gray[3],
+    }),
   },
 
   subLink: {
@@ -120,15 +149,31 @@ const useStyles = createStyles((theme) => ({
     },
   },
   user: {
-    color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
+    color: theme.white,
     padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
     borderRadius: theme.radius.sm,
     transition: "background-color 100ms ease",
 
-    "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
+    ...theme.fn.hover({
+      backgroundColor: "transparent",
+    }),
+
+    [theme.fn.smallerThan("xs")]: {
+      display: "none",
     },
+  },
+  userFixed: {
+    color: theme.colorScheme === "dark" ? theme.white : theme.black,
+    padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
+    borderRadius: theme.radius.sm,
+    transition: "background-color 100ms ease",
+
+    ...theme.fn.hover({
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.gray[3],
+    }),
 
     [theme.fn.smallerThan("xs")]: {
       display: "none",
@@ -137,6 +182,40 @@ const useStyles = createStyles((theme) => ({
   userActive: {
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
+  },
+  navbar: {
+    position: "relative",
+    maxHeight: "5rem",
+    height: "5rem",
+    background: "transparent",
+    borderBottom: 0,
+    zIndex: 4,
+  },
+  navbarFixed: {
+    position: "fixed",
+    top: "0",
+    maxHeight: "5rem",
+    height: "5rem",
+    zIndex: 4,
+    backgroundColor: theme.colorScheme === "dark" ? "#1A1B1E" : "#fff",
+    animation: `${smoothScroll} 1s forwards`,
+    borderBottom: `${rem(1)} solid ${
+      theme.colorScheme === "dark" ? "transparent" : theme.colors.gray[2]
+    }`,
+  },
+
+  toggle: {
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+  toggleFixed: {
+    "&:hover": {
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.gray[3],
+    },
   },
 }));
 
@@ -182,6 +261,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const { classes, theme, cx } = useStyles();
   const [userMenuOpened, setUserMenuOpened] = useState(false);
+  const [navbar, setNavbar] = useState(false);
 
   const links = mockdata.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.title}>
@@ -201,9 +281,24 @@ export function TopHeader({ user }: HeaderTabsProps) {
     </UnstyledButton>
   ));
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+
+  const changeBackground = () => {
+    if (window.scrollY >= 64) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeBackground);
+
   return (
     <Box>
-      <Header height={60} px="md">
+      <Header
+        height={60}
+        px="md"
+        className={navbar ? classes.navbarFixed : classes.navbar}
+      >
         <Group position="apart" sx={{ height: "100%" }}>
           <MantineLogo size={30} />
 
@@ -214,7 +309,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
           >
             <NavLink
               to="/"
-              className={classes.link}
+              className={navbar ? classes.linkFixed : classes.link}
               style={({ isActive }) => {
                 return {
                   backgroundColor: isActive
@@ -237,7 +332,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
             </NavLink>
             <NavLink
               to="/buy"
-              className={classes.link}
+              className={navbar ? classes.linkFixed : classes.link}
               style={({ isActive }) => {
                 return {
                   backgroundColor: isActive
@@ -260,7 +355,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
             </NavLink>
             <NavLink
               to="/rent"
-              className={classes.link}
+              className={navbar ? classes.linkFixed : classes.link}
               style={({ isActive }) => {
                 return {
                   backgroundColor: isActive
@@ -283,7 +378,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
             </NavLink>
             <NavLink
               to="sale"
-              className={classes.link}
+              className={navbar ? classes.linkFixed : classes.link}
               style={({ isActive }) => {
                 return {
                   backgroundColor: isActive
@@ -306,7 +401,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
             </NavLink>
             <NavLink
               to="home-loans"
-              className={classes.link}
+              className={navbar ? classes.linkFixed : classes.link}
               style={({ isActive }) => {
                 return {
                   backgroundColor: isActive
@@ -329,7 +424,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
             </NavLink>
             <NavLink
               to="agent-finder"
-              className={classes.link}
+              className={navbar ? classes.linkFixed : classes.link}
               style={({ isActive }) => {
                 return {
                   backgroundColor: isActive
@@ -360,7 +455,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
               <HoverCard.Target>
                 <NavLink
                   to="#"
-                  className={classes.link}
+                  className={navbar ? classes.linkFixed : classes.link}
                   // style={({ isActive }) => {
                   //   return {
                   //     backgroundColor: isActive
@@ -444,6 +539,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
                     ? theme.colors.yellow[4]
                     : theme.colors.blue[6],
               })}
+              className={navbar ? classes.toggleFixed : classes.toggle}
             >
               {colorScheme === "dark" ? (
                 <IconSun size="1.2rem" />
@@ -462,7 +558,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
             >
               <Menu.Target>
                 <UnstyledButton
-                  className={cx(classes.user, {
+                  className={cx(navbar ? classes.userFixed : classes.user, {
                     [classes.userActive]: userMenuOpened,
                   })}
                 >
@@ -579,7 +675,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
           <NavLink
             to="home"
             onClick={closeDrawer}
-            className={classes.link}
+            className={navbar ? classes.linkFixed : classes.link}
             style={({ isActive }) => {
               return {
                 backgroundColor: isActive
@@ -603,7 +699,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
           <NavLink
             to="buy"
             onClick={closeDrawer}
-            className={classes.link}
+            className={navbar ? classes.linkFixed : classes.link}
             style={({ isActive }) => {
               return {
                 backgroundColor: isActive
@@ -627,7 +723,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
           <NavLink
             to="rent"
             onClick={closeDrawer}
-            className={classes.link}
+            className={navbar ? classes.linkFixed : classes.link}
             style={({ isActive }) => {
               return {
                 backgroundColor: isActive
@@ -651,7 +747,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
           <NavLink
             to="sale"
             onClick={closeDrawer}
-            className={classes.link}
+            className={navbar ? classes.linkFixed : classes.link}
             style={({ isActive }) => {
               return {
                 backgroundColor: isActive
@@ -675,7 +771,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
           <NavLink
             to="home-loans"
             onClick={closeDrawer}
-            className={classes.link}
+            className={navbar ? classes.linkFixed : classes.link}
             style={({ isActive }) => {
               return {
                 backgroundColor: isActive
@@ -699,7 +795,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
           <NavLink
             to="agent-finder"
             onClick={closeDrawer}
-            className={classes.link}
+            className={navbar ? classes.linkFixed : classes.link}
             style={({ isActive }) => {
               return {
                 backgroundColor: isActive
@@ -720,7 +816,10 @@ export function TopHeader({ user }: HeaderTabsProps) {
           >
             Agent Finder
           </NavLink>
-          <UnstyledButton className={classes.link} onClick={toggleLinks}>
+          <UnstyledButton
+            className={navbar ? classes.linkFixed : classes.link}
+            onClick={toggleLinks}
+          >
             <Center inline>
               <Box component="span" mr={5}>
                 Features
