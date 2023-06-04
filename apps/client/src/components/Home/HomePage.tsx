@@ -9,6 +9,7 @@ import { TopHeader } from "../Navbar/TopHeader";
 import { FetchQuery } from "../../utils/ApiCall";
 import { HERO } from "../../utils/ApiRoutes";
 import { useQuery } from "@tanstack/react-query";
+import Partners from "./Partners";
 
 const useStyles = createStyles((theme) => ({
   Contenttop: {
@@ -50,6 +51,9 @@ const useStyles = createStyles((theme) => ({
     width: "100%",
     top: 0,
     right: 0,
+  },
+  partners: {
+    backgroundColor: theme.colorScheme === "dark" ? "transparent" : "#f9f9f8",
   },
 }));
 const heroSecton = async () => {
@@ -108,6 +112,15 @@ export default function HomePage() {
           </div>
         </div>
       </Container>
+      <div className={classes.partners}>
+        <Container size="lg">
+          <div className={classes.inner}>
+            <div className={classes.Contenttop}>
+              <Partners />{" "}
+            </div>
+          </div>
+        </Container>
+      </div>
     </>
   );
 }

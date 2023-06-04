@@ -210,6 +210,11 @@ const useStyles = createStyles((theme) => ({
       opacity: 0.9,
     },
   },
+  simple: {
+    [`@media (max-width: ${em(374)}) `]: {
+      display: "block",
+    },
+  },
 }));
 
 export function Team() {
@@ -261,6 +266,7 @@ export function Team() {
           style={{
             justifyItems: "center",
           }}
+          className={classes.simple}
         >
           <Container className={classes.hovercard}>
             <Paper>

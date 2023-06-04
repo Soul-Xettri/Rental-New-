@@ -130,3 +130,34 @@ button.mantine-UnstyledButton-root.mantine-Carousel-indicator.mantine-1jkjqkp {
 .mainCardWhole {
   transition: all 0.4s ease 0s;
 }
+
+.line::before {
+  flex-grow: 1;
+  height: 1px;
+  content: "\a0";
+  background-color: #ddd;
+  position: relative;
+  top: 0.5em;
+  margin: 5px 15px;
+  padding: 0px 50px;
+}
+
+.line::after {
+  flex-grow: 1;
+  height: 1px;
+  content: "\a0";
+  background-color: #ddd;
+  position: relative;
+  top: 0.5em;
+  margin: 5px 15px;
+  padding: 0px 50px;
+}
+
+@media only screen and (max-width: 529px) {
+  .line::after {
+    display: none;
+  }
+  .line::before {
+    display: none;
+  }
+}
