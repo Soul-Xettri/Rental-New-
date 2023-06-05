@@ -10,6 +10,7 @@ import { FetchQuery } from "../../utils/ApiCall";
 import { HERO } from "../../utils/ApiRoutes";
 import { useQuery } from "@tanstack/react-query";
 import Partners from "./Partners";
+import Testimonial from "./Testimonial";
 
 const useStyles = createStyles((theme) => ({
   Contenttop: {
@@ -121,6 +122,13 @@ export default function HomePage() {
           </div>
         </Container>
       </div>
+      <Container size="lg">
+        <div className={classes.inner}>
+          <div className={classes.Contenttop}>
+            <Testimonial />{" "}
+          </div>
+        </div>
+      </Container>
     </>
   );
 }
