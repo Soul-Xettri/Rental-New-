@@ -59,7 +59,7 @@ const useStyles = createStyles((theme) => ({
     display: "block",
     lineHeight: 1,
     padding: `${rem(8)} ${rem(12)}`,
-    borderRadius: theme.radius.sm,
+    borderRadius: 0,
     textDecoration: "none",
     color: theme.white,
     fontSize: theme.fontSizes.sm,
@@ -79,7 +79,7 @@ const useStyles = createStyles((theme) => ({
     display: "block",
     lineHeight: 1,
     padding: `${rem(8)} ${rem(12)}`,
-    borderRadius: theme.radius.sm,
+    borderRadius: 0,
     textDecoration: "none",
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
     fontSize: theme.fontSizes.sm,
@@ -102,7 +102,7 @@ const useStyles = createStyles((theme) => ({
   subLink: {
     width: "100%",
     padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-    borderRadius: theme.radius.md,
+    borderRadius: 0,
 
     ...theme.fn.hover({
       backgroundColor:
@@ -448,7 +448,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
             <HoverCard
               width={600}
               position="bottom"
-              radius="md"
+              radius="0"
               shadow="md"
               withinPortal
             >

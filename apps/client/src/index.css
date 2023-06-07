@@ -164,7 +164,7 @@ button.mantine-UnstyledButton-root.mantine-Carousel-indicator.mantine-1jkjqkp {
 
 .testimonialBlock {
   padding: 3rem;
-  border-radius: 4px;
+  border-radius: 0;
   border: 1px solid #f4f4f4;
   background-color: #fff;
   /* transition: all 0.3s ease; */
@@ -173,7 +173,7 @@ button.mantine-UnstyledButton-root.mantine-Carousel-indicator.mantine-1jkjqkp {
 
 .testimonialBlockBlack {
   padding: 3rem;
-  border-radius: 4px;
+  border-radius: 0;
   /* border: 1px solid #f4f4f4; */
   background-color: #1a2d3f;
   /* transition: all 0.3s ease; */
@@ -236,7 +236,7 @@ button.mantine-UnstyledButton-root.mantine-Carousel-indicator.mantine-1jkjqkp {
   /* float: right; */
   background: #fff;
   padding: 10px 20px;
-  border-radius: 3px;
+  border-radius: 0;
   border: 1px solid #f4f4f4;
   /* transition: all 0.3s ease; */
   margin-right: 30px;
@@ -253,7 +253,7 @@ button.mantine-UnstyledButton-root.mantine-Carousel-indicator.mantine-1jkjqkp {
   /* float: right; */
   background: #1a2d3f;
   padding: 10px 20px;
-  border-radius: 3px;
+  border-radius: 0;
   /* border: 1px solid #f4f4f4; */
   /* transition: all 0.3s ease; */
   margin-right: 30px;

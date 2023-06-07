@@ -12,6 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 import Partners from "./Partners";
 import Testimonial from "./Testimonial";
 import HomeVedio from "./HomeVedio";
+import { News } from "./News";
 
 const useStyles = createStyles((theme) => ({
   Contenttop: {
@@ -132,6 +133,13 @@ export default function HomePage() {
         <div className={classes.inner}>
           <div className={classes.Contenttop}>
             <Testimonial />{" "}
+          </div>
+        </div>
+      </Container>
+      <Container size="lg">
+        <div className={classes.inner}>
+          <div className={classes.Contenttop}>
+            <News />{" "}
           </div>
         </div>
       </Container>
