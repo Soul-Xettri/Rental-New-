@@ -23,6 +23,7 @@ import {
   useMantineColorScheme,
   Paper,
   keyframes,
+  em,
 } from "@mantine/core";
 import { MantineLogo } from "@mantine/ds";
 import { useDisclosure } from "@mantine/hooks";
@@ -139,6 +140,11 @@ const useStyles = createStyles((theme) => ({
 
   hiddenMobile: {
     [theme.fn.smallerThan("sm")]: {
+      display: "none",
+    },
+  },
+  hiddenTab: {
+    [`@media (max-width: ${em(876)})`]: {
       display: "none",
     },
   },
@@ -525,7 +531,7 @@ export function TopHeader({ user }: HeaderTabsProps) {
             </HoverCard>
           </Group>
 
-          <Group className={classes.hiddenMobile}>
+          <Group className={classes.hiddenTab} style={{ gap: "0" }}>
             <ActionIcon
               onClick={() => toggleColorScheme()}
               size="lg"
@@ -671,7 +677,27 @@ export function TopHeader({ user }: HeaderTabsProps) {
             my="sm"
             color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
           />
-
+          <ActionIcon
+            onClick={() => toggleColorScheme()}
+            size="lg"
+            sx={(theme) => ({
+              backgroundColor:
+                theme.colorScheme === "dark"
+                  ? theme.colors.dark[6]
+                  : theme.colors.gray[0],
+              color:
+                theme.colorScheme === "dark"
+                  ? theme.colors.yellow[4]
+                  : theme.colors.blue[6],
+            })}
+            className={navbar ? classes.toggleFixed : classes.toggle}
+          >
+            {colorScheme === "dark" ? (
+              <IconSun size="1.2rem" />
+            ) : (
+              <IconMoonStars size="1.2rem" />
+            )}
+          </ActionIcon>
           <NavLink
             to="home"
             onClick={closeDrawer}
