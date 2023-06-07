@@ -76,7 +76,11 @@ const data = {
 
 export function News() {
   const { classes, theme } = useStyles();
+  let button = " buttonDark";
 
+  if (document.body.style.backgroundColor === "white") {
+    button = "buttonWhite";
+  }
   const features = data.badges.map((badge) => (
     <Badge
       color={theme.colorScheme === "dark" ? "dark" : "gray"}
@@ -164,7 +168,7 @@ export function News() {
           </Card.Section>
 
           <Group mt="xs">
-            <Button radius="0" style={{ flex: 1 }}>
+            <Button className={`${button}`} radius="0" style={{ flex: 1 }}>
               Show details
             </Button>
             <ActionIcon variant="default" radius="0" size={36}>
@@ -201,7 +205,7 @@ export function News() {
           </Card.Section>
 
           <Group mt="xs">
-            <Button radius="0" style={{ flex: 1 }}>
+            <Button className={` ${button}`} radius="0" style={{ flex: 1 }}>
               Show details
             </Button>
             <ActionIcon variant="default" radius="0" size={36}>
@@ -238,7 +242,7 @@ export function News() {
           </Card.Section>
 
           <Group mt="xs">
-            <Button radius="0" style={{ flex: 1 }}>
+            <Button className={` ${button}`} radius="0" style={{ flex: 1 }}>
               Show details
             </Button>
             <ActionIcon variant="default" radius="0" size={36}>
