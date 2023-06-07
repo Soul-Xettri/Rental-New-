@@ -1,42 +1,42 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { createStyles, em } from "@mantine/core";
+// import { createStyles, em } from "@mantine/core";
 import { Link } from "react-router-dom";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
-const useStyles = createStyles(() => ({
-  homeVedio: {
-    padding: "150px 0",
-  },
-  //   bgTheme: {
-  //     backgroundImage: "url(https://wallsproperty.netlify.app/images/bg18.jpg)",
-  //     width: "100%",
-  //     backgroundPosition: "center center",
-  //     backgroundSize: "cover",
-  //   },
+// const useStyles = createStyles(() => ({
+//   homeVedio: {
+//     padding: "150px 0",
+//   },
+//   //   bgTheme: {
+//   //     backgroundImage: "url(https://wallsproperty.netlify.app/images/bg18.jpg)",
+//   //     width: "100%",
+//   //     backgroundPosition: "center center",
+//   //     backgroundSize: "cover",
+//   //   },
 
-  container: {
-    width: "100%",
-    paddingRight: "15px",
-    paddingLeft: "15px",
-    marginRight: "auto",
-    marginLeft: "auto",
+//   container: {
+//     width: "100%",
+//     paddingRight: "15px",
+//     paddingLeft: "15px",
+//     marginRight: "auto",
+//     marginLeft: "auto",
 
-    [`@media (max-width: ${em(576)})`]: {
-      maxWidth: "540px",
-    },
-  },
+//     [`@media (max-width: ${em(576)})`]: {
+//       maxWidth: "540px",
+//     },
+//   },
 
-  row: {
-    display: "flex",
-    flexWrap: "wrap",
-    marginRight: "-15px",
-    marginLeft: "-15px",
-  },
+//   row: {
+//     display: "flex",
+//     flexWrap: "wrap",
+//     marginRight: "-15px",
+//     marginLeft: "-15px",
+//   },
 
-  justifyContent: {
-    justifyContent: "center !important",
-  },
-}));
+//   justifyContent: {
+//     justifyContent: "center !important",
+//   },
+// }));
 
 export default function HomeVedio() {
   // const { classes } = useStyles();
