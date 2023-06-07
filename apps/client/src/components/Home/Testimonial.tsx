@@ -92,25 +92,33 @@ interface CardProps {
 
 function Card({ image, comment, userName, userDetail }: CardProps) {
   //   const { classes } = useStyles();
+  let testimonialBlock = "testimonialBlock";
+  let testimonialUserName = "testimonialUserName";
+  let commentClass = "comment";
+  let userPosition = "userPosition";
+
+  if (document.body.style.backgroundColor === "rgb(26, 27, 30)") {
+    testimonialBlock = "testimonialBlockBlack";
+    testimonialUserName = "testimonialUserNameBlack";
+    commentClass = "commentBlack";
+    userPosition = "userPositionBlack";
+  }
 
   return (
     <>
       <div className="testimonial">
         <div className="bord">
-          <div className="testimonialBlock">
-            <p className="comment">{comment}</p>
+          <div className={`${testimonialBlock}`}>
+            <p className={`${commentClass}`}>{comment}</p>
           </div>
-        </div>
-        <div className="testimonialUser">
-          <div>
-            <img src={image} alt="" className="testimonialUserImage" />
-          </div>
-          <div className="testimonialUserName">
-            {userName}
-            <br />{" "}
-            <span style={{ color: "#495057", fontSize: "14px" }}>
-              {userDetail}
-            </span>
+          <div className="testimonialUser">
+            <div>
+              <img src={image} alt="" className="testimonialUserImage" />
+            </div>
+            <div className={`${testimonialUserName}`}>
+              {userName}
+              <br /> <span className={`${userPosition}`}>{userDetail}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -213,7 +221,8 @@ export default function Testimonial() {
         align="start"
         breakpoints={[
           { maxWidth: "70rem", slideSize: "50%" },
-          { maxWidth: "sm", slideSize: "50%", slideGap: 0 },
+          { maxWidth: "48rem", slideSize: "95%", slideGap: "md" },
+          { maxWidth: "32rem", slideSize: "100%", slideGap: "md" },
         ]}
         slidesToScroll={mobile ? 1 : 1}
         display={"grid"}
@@ -221,6 +230,7 @@ export default function Testimonial() {
         onMouseEnter={autoplay.current.stop}
         onMouseLeave={autoplay.current.reset}
         loop
+        className="carousel"
       >
         {slides}
       </Carousel>
