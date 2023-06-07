@@ -11,6 +11,7 @@ import { HERO } from "../../utils/ApiRoutes";
 import { useQuery } from "@tanstack/react-query";
 import Partners from "./Partners";
 import Testimonial from "./Testimonial";
+import HomeVedio from "./HomeVedio";
 
 const useStyles = createStyles((theme) => ({
   Contenttop: {
@@ -113,6 +114,11 @@ export default function HomePage() {
           </div>
         </div>
       </Container>
+      <div className={classes.inner}>
+        <div className={classes.Contenttop}>
+          <HomeVedio />{" "}
+        </div>
+      </div>
       <div className={classes.partners}>
         <Container size="lg">
           <div className={classes.inner}>

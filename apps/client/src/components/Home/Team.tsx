@@ -209,6 +209,9 @@ const useStyles = createStyles((theme) => ({
     [`&:hover .${"mainCardWhole"}`]: {
       opacity: 0.9,
     },
+    [`@media (max-width: ${em(374)}) `]: {
+      marginTop: "25px",
+    },
   },
   simple: {
     [`@media (max-width: ${em(374)}) `]: {
@@ -261,7 +264,11 @@ export function Team() {
               verticalSpacing: "60px",
             },
             { maxWidth: "48rem", cols: 2, spacing: "50px" },
-            { maxWidth: "36rem", cols: 1, spacing: "sm" },
+            {
+              maxWidth: "36rem",
+              cols: 1,
+              spacing: "sm",
+            },
           ]}
           style={{
             justifyItems: "center",
