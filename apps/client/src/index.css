@@ -469,3 +469,69 @@ button.mantine-UnstyledButton-root.mantine-Carousel-indicator.mantine-1jkjqkp {
 .justify-content-center {
   justify-content: center !important;
 }
+.cta-v1White {
+  background: linear-gradient(90deg, #443088 0%, #3454d1 61%, #009fff 100%);
+}
+
+.cta-v1Black {
+  background: linear-gradient(90deg, #0d0330 0%, #061344 61%, #022236 100%);
+}
+
+.callToActionContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttonctaDark {
+  --tw-bg-opacity: 1;
+  background-color: #1a2d3f;
+  color: #228be6;
+}
+
+.buttonctaDark:hover {
+  --tw-bg-opacity: 1;
+  background-color: #051c36;
+}
+
+.buttonctaWhite {
+  --tw-bg-opacity: 1;
+  background-color: #fff;
+  color: #2563eb;
+}
+
+.buttonctaWhite:hover {
+  --tw-bg-opacity: 1;
+  background-color: #1d4ed8;
+  color: #fff;
+}
+
+@media only screen and (max-width: 767px) {
+  .callToActionContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .buttonContainer {
+    padding-top: 20px;
+  }
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .textTitle {
+    text-align: center;
+  }
+  .textParagraph {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .buttonctaDark {
+    height: 50px;
+  }
+  .buttonctaWhite {
+    height: 50px;
+  }
+}

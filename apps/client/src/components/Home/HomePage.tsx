@@ -13,6 +13,7 @@ import Partners from "./Partners";
 import Testimonial from "./Testimonial";
 import HomeVedio from "./HomeVedio";
 import { News } from "./News";
+import CallToAction from "./CallToAction";
 
 const useStyles = createStyles((theme) => ({
   Contenttop: {
@@ -57,6 +58,13 @@ const useStyles = createStyles((theme) => ({
   },
   partners: {
     backgroundColor: theme.colorScheme === "dark" ? "transparent" : "#f9f9f8",
+  },
+  calltoaction: {
+    background:
+      theme.colorScheme === "dark"
+        ? "linear-gradient(90deg, #0d0330 0%, #061344 61%, #022236 100%)"
+        : "linear-gradient(90deg, #443088 0%, #3454d1 61%, #009fff 100%)",
+    marginTop: `calc(${theme.spacing.xl} * 2)`,
   },
 }));
 const heroSecton = async () => {
@@ -143,6 +151,15 @@ export default function HomePage() {
           </div>
         </div>
       </Container>
+      <div className={classes.calltoaction}>
+        <Container size="lg">
+          <div className={classes.inner}>
+            <div className={classes.Contenttop}>
+              <CallToAction />{" "}
+            </div>
+          </div>
+        </Container>
+      </div>
     </>
   );
 }
