@@ -1,4 +1,4 @@
-import { createStyles, Container, Title, Text, rem } from "@mantine/core";
+import { createStyles, Container, Title, Text, rem, em } from "@mantine/core";
 import { FetchQuery } from "../../utils/ApiCall";
 import { HERO } from "../../utils/ApiRoutes";
 import { useQuery } from "@tanstack/react-query";
@@ -14,6 +14,9 @@ const useStyles = createStyles((theme) => ({
     //   "linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%), url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1080&q=80)",
     paddingTop: `calc(${theme.spacing.xl} * 3)`,
     paddingBottom: `calc(${theme.spacing.xl} * 3)`,
+    [`@media (max-width: ${em(579)}) `]: {
+      paddingTop: `0`,
+    },
   },
   headerbg: {
     backgroundSize: "cover",
@@ -23,12 +26,19 @@ const useStyles = createStyles((theme) => ({
     WebkitBackgroundSize: "cover",
     position: "relative",
     backgroundColor: "#d1e6f9",
-    height: "110vh",
+    // height: "90vh",
     minHeight: "25rem",
     width: "100%",
     padding: "0",
     margin: "0",
     zIndex: 2,
+
+    // [`@media (max-width: ${em(579)}) and (min-width:${em(384)})`]: {
+    //   height: "120vh",
+    // },
+    // [`@media (max-width: ${em(383)}) `]: {
+    //   height: "160vh",
+    // },
   },
 
   inner: {

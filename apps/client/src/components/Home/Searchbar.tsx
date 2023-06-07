@@ -3,11 +3,11 @@ import BuySearchbar from "./BuySearchbar";
 import RentSearchbar from "./RentSearchbar";
 
 const useStyles = createStyles((theme) => ({
-  tabs: {
-    [theme.fn.smallerThan("sm")]: {
-      display: "none",
-    },
-  },
+  // tabs: {
+  //   [theme.fn.smallerThan("sm")]: {
+  //     display: "none",
+  //   },
+  // },
 
   tabsList: {
     borderBottom: "0 !important",
@@ -63,7 +63,7 @@ export function Searchbar() {
         })}
         // style={{ opacity: 0.5 }}
       >
-        <Tabs defaultValue="first" className={classes.tabs}>
+        <Tabs defaultValue="first">
           <Tabs.List className={classes.tabsList}>
             <Tabs.Tab value="first" className={classes.tab}>
               Buy

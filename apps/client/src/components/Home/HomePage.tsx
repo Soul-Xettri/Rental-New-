@@ -1,4 +1,4 @@
-import { Container, createStyles } from "@mantine/core";
+import { Container, createStyles, em } from "@mantine/core";
 import { HeroSection } from "./HeroSection";
 import { PopularCity } from "./PopularCity";
 import { FeaturedProperty } from "./FeaturedProperty";
@@ -41,12 +41,19 @@ const useStyles = createStyles((theme) => ({
     WebkitBackgroundSize: "cover",
     position: "relative",
     backgroundColor: "#d1e6f9",
-    height: "110vh",
+    // height: "90vh",
     minHeight: "25rem",
     width: "100%",
     padding: "0",
     margin: "0",
     zIndex: 2,
+
+    [`@media (max-width: ${em(579)}) and (min-width:${em(384)})`]: {
+      height: "120vh",
+    },
+    [`@media (max-width: ${em(383)}) `]: {
+      height: "160vh",
+    },
   },
   overlay: {
     backgroundColor: "rgba(27,33,39,0.5)",

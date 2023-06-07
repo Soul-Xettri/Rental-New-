@@ -12,7 +12,21 @@ export default function RentSearchbar() {
 
   return (
     <div>
-      <SimpleGrid cols={6} pt="30px">
+      <SimpleGrid
+        cols={6}
+        pt="30px"
+        breakpoints={[
+          {
+            maxWidth: "70rem",
+            cols: 3,
+            spacing: "60px",
+            verticalSpacing: "60px",
+          },
+          { maxWidth: "48rem", cols: 2, spacing: "50px" },
+          { maxWidth: "36rem", cols: 2, spacing: "sm" },
+          { maxWidth: "24rem", cols: 1, spacing: "sm" },
+        ]}
+      >
         {/* <span className="placeholder col-3 placeholder-lg bg-primary">
             dadad
           </span> */}
