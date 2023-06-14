@@ -22,7 +22,7 @@ async function main() {
       description:
         "Find your dream home with ease, whether you're looking to rent or buy. We are your trusted destination for exceptional rental properties and enticing sale options. Our extensive collection of listings is meticulously curated to meet the diverse needs and preferences of our valued clients.",
       image:
-        'http://localhost:3000/api/home/pictures/pexels-eberhard-grossgasteiger-1421903_1685201024926.jpg',
+        'http://localhost:3000/api/home/pictures/bg7_1686749362075.jpg',
     },
   });
 }
