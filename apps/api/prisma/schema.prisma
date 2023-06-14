@@ -202,3 +202,45 @@ enum PROVINCE {
   PROVINCE_6
   PROVINCE_7
 }
+
+model Property {
+  id     Int      @id @default(autoincrement())
+  room   Room[]
+  hostel Hostel[]
+  hotel  Hotel[]
+  house  House[]
+  land   Land[]
+}
+
+model Room {
+  id         Int       @id @default(autoincrement())
+  Property   Property? @relation(fields: [propertyId], references: [id])
+  propertyId Int?
+}
+
+model Hostel {
+  id Int @id @default(autoincrement())
+
+  Property   Property? @relation(fields: [propertyId], references: [id])
+  propertyId Int?
+}
+
+model Hotel {
+  id Int @id @default(autoincrement())
+
+  Property   Property? @relation(fields: [propertyId], references: [id])
+  propertyId Int?
+}
+
+model House {
+  id         Int       @id @default(autoincrement())
+  Property   Property? @relation(fields: [propertyId], references: [id])
+  propertyId Int?
+}
+
+model Land {
+  id Int @id @default(autoincrement())
+
+  Property   Property? @relation(fields: [propertyId], references: [id])
+  propertyId Int?
+}
