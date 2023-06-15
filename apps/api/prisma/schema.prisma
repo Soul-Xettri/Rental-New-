@@ -219,15 +219,13 @@ model Room {
 }
 
 model Hostel {
-  id Int @id @default(autoincrement())
-
+  id         Int       @id @default(autoincrement())
   Property   Property? @relation(fields: [propertyId], references: [id])
   propertyId Int?
 }
 
 model Hotel {
-  id Int @id @default(autoincrement())
-
+  id         Int       @id @default(autoincrement())
   Property   Property? @relation(fields: [propertyId], references: [id])
   propertyId Int?
 }
@@ -239,8 +237,7 @@ model House {
 }
 
 model Land {
-  id Int @id @default(autoincrement())
-
+  id         Int       @id @default(autoincrement())
   Property   Property? @relation(fields: [propertyId], references: [id])
   propertyId Int?
 }
