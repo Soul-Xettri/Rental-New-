@@ -184,10 +184,10 @@ model Room {
   description            String
   location               String
   price                  String
-  Availability           String
+  availability           String
   contact                String
   photos                 String
-  thumbnail              String
+  thumbnail              String?
   roommates_Restrictions String
   termsAndCondition      String
   additionalAmenities    String
@@ -205,10 +205,10 @@ model Hostel {
   description            String
   location               String
   price                  String
-  Availability           String
+  availability           String
   contact                String
   photos                 String
-  thumbnail              String
+  thumbnail              String?
   roommates_Restrictions String
   termsAndCondition      String
   additionalAmenities    String
@@ -226,10 +226,10 @@ model Hotel {
   description            String
   location               String
   price                  String
-  Availability           String
+  availability           String
   contact                String
   photos                 String
-  thumbnail              String
+  thumbnail              String?
   roommates_Restrictions String
   termsAndCondition      String
   additionalAmenities    String
@@ -246,10 +246,10 @@ model House {
   description            String
   location               String
   price                  String
-  Availability           String
+  availability           String
   contact                String
   photos                 String
-  thumbnail              String
+  thumbnail              String?
   roommates_Restrictions String
   termsAndCondition      String
   additionalAmenities    String
@@ -267,10 +267,10 @@ model Land {
   description            String
   location               String
   price                  String
-  Availability           String
+  availability           String
   contact                String
   photos                 String
-  thumbnail              String
+  thumbnail              String?
   roommates_Restrictions String
   termsAndCondition      String
   additionalAmenities    String
