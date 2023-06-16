@@ -213,47 +213,60 @@ model Property {
 }
 
 model Room {
-  id         Int       @id @default(autoincrement())
-  title String
-  description String
-  location String
-  price String
-  Availability String
-  contact String
-  photos String
-  thumbnail String
+  id                     Int       @id @default(autoincrement())
+  title                  String
+  description            String
+  location               String
+  price                  String
+  Availability           String
+  contact                String
+  photos                 String
+  thumbnail              String
   roommates_Restrictions String
-  termsAndCondition String
-  additionalAmenities String
-  featured Boolean @default(false)
-  date DateTime @default(now())
-  Property   Property? @relation(fields: [propertyId], references: [id])
-  propertyId Int?
+  termsAndCondition      String
+  additionalAmenities    String
+  featured               Boolean   @default(false)
+  date                   DateTime  @default(now())
+  Property               Property? @relation(fields: [propertyId], references: [id])
+  propertyId             Int?
 }
 
 model Hostel {
-  id         Int       @id @default(autoincrement())
-   title String
-  description String
-  location String
-  price String
-  Availability String
-  contact String
-  photos String
-  thumbnail String
+  id                     Int       @id @default(autoincrement())
+  title                  String
+  description            String
+  location               String
+  price                  String
+  Availability           String
+  contact                String
+  photos                 String
+  thumbnail              String
   roommates_Restrictions String
-  termsAndCondition String
-  additionalAmenities String
-  featured Boolean @default(false)
-  date DateTime @default(now())
-  Property   Property? @relation(fields: [propertyId], references: [id])
-  propertyId Int?
+  termsAndCondition      String
+  additionalAmenities    String
+  featured               Boolean   @default(false)
+  date                   DateTime  @default(now())
+  Property               Property? @relation(fields: [propertyId], references: [id])
+  propertyId             Int?
 }
 
 model Hotel {
-  id         Int       @id @default(autoincrement())
-  Property   Property? @relation(fields: [propertyId], references: [id])
-  propertyId Int?
+  id                     Int       @id @default(autoincrement())
+  title                  String
+  description            String
+  location               String
+  price                  String
+  Availability           String
+  contact                String
+  photos                 String
+  thumbnail              String
+  roommates_Restrictions String
+  termsAndCondition      String
+  additionalAmenities    String
+  featured               Boolean   @default(false)
+  date                   DateTime  @default(now())
+  Property               Property? @relation(fields: [propertyId], references: [id])
+  propertyId             Int?
 }
 
 model House {
