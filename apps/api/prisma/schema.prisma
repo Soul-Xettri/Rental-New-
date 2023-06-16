@@ -233,6 +233,19 @@ model Room {
 
 model Hostel {
   id         Int       @id @default(autoincrement())
+   title String
+  description String
+  location String
+  price String
+  Availability String
+  contact String
+  photos String
+  thumbnail String
+  roommates_Restrictions String
+  termsAndCondition String
+  additionalAmenities String
+  featured Boolean @default(false)
+  date DateTime @default(now())
   Property   Property? @relation(fields: [propertyId], references: [id])
   propertyId Int?
 }
