@@ -11,6 +11,7 @@ import { MessageModule } from './message/message.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { HomeModule } from './home/home.module';
 import { UploadsModule } from './uploads/uploads.module';
+import { PropertyModule } from './property/property.module';
 @Module({
   imports: [
     MulterModule.register({
@@ -27,6 +28,7 @@ import { UploadsModule } from './uploads/uploads.module';
     MessageModule,
     HomeModule,
     UploadsModule,
+    PropertyModule,
   ],
   providers: [
     {
