@@ -169,6 +169,124 @@ model Messages {
   @@map("messages")
 }
 
+model Property {
+  id     Int      @id @default(autoincrement())
+  room   Room[]
+  hostel Hostel[]
+  hotel  Hotel[]
+  house  House[]
+  land   Land[]
+}
+
+model Room {
+  id                     Int       @id @default(autoincrement())
+  title                  String
+  description            String
+  location               String
+  price                  String
+  Availability           String
+  contact                String
+  photos                 String
+  thumbnail              String
+  roommates_Restrictions String
+  termsAndCondition      String
+  additionalAmenities    String
+  featured               Boolean   @default(false)
+  date                   DateTime  @default(now())
+  type                   Type
+
+  Property               Property? @relation(fields: [propertyId], references: [id])
+  propertyId             Int?
+}
+
+model Hostel {
+  id                     Int       @id @default(autoincrement())
+  title                  String
+  description            String
+  location               String
+  price                  String
+  Availability           String
+  contact                String
+  photos                 String
+  thumbnail              String
+  roommates_Restrictions String
+  termsAndCondition      String
+  additionalAmenities    String
+  featured               Boolean   @default(false)
+  date                   DateTime  @default(now())
+  type                   Type
+
+  Property               Property? @relation(fields: [propertyId], references: [id])
+  propertyId             Int?
+}
+
+model Hotel {
+  id                     Int       @id @default(autoincrement())
+  title                  String
+  description            String
+  location               String
+  price                  String
+  Availability           String
+  contact                String
+  photos                 String
+  thumbnail              String
+  roommates_Restrictions String
+  termsAndCondition      String
+  additionalAmenities    String
+  featured               Boolean   @default(false)
+  date                   DateTime  @default(now())
+  type                   Type
+  Property               Property? @relation(fields: [propertyId], references: [id])
+  propertyId             Int?
+}
+
+model House {
+  id                     Int       @id @default(autoincrement())
+  title                  String
+  description            String
+  location               String
+  price                  String
+  Availability           String
+  contact                String
+  photos                 String
+  thumbnail              String
+  roommates_Restrictions String
+  termsAndCondition      String
+  additionalAmenities    String
+  featured               Boolean   @default(false)
+  date                   DateTime  @default(now())
+  type                   Type
+
+  Property               Property? @relation(fields: [propertyId], references: [id])
+  propertyId             Int?
+}
+
+model Land {
+  id                     Int       @id @default(autoincrement())
+  title                  String
+  description            String
+  location               String
+  price                  String
+  Availability           String
+  contact                String
+  photos                 String
+  thumbnail              String
+  roommates_Restrictions String
+  termsAndCondition      String
+  additionalAmenities    String
+  featured               Boolean   @default(false)
+  date                   DateTime  @default(now())
+  type                   Type
+
+  Property               Property? @relation(fields: [propertyId], references: [id])
+  propertyId             Int?
+}
+
+enum Type {
+  RENT
+  SALE
+}
+
 enum NotificationType {
   APPOINTMENT
   KYC
@@ -201,108 +319,4 @@ enum PROVINCE {
   PROVINCE_5
   PROVINCE_6
   PROVINCE_7
-}
-
-model Property {
-  id     Int      @id @default(autoincrement())
-  room   Room[]
-  hostel Hostel[]
-  hotel  Hotel[]
-  house  House[]
-  land   Land[]
-}
-
-model Room {
-  id                     Int       @id @default(autoincrement())
-  title                  String
-  description            String
-  location               String
-  price                  String
-  Availability           String
-  contact                String
-  photos                 String
-  thumbnail              String
-  roommates_Restrictions String
-  termsAndCondition      String
-  additionalAmenities    String
-  featured               Boolean   @default(false)
-  date                   DateTime  @default(now())
-  Property               Property? @relation(fields: [propertyId], references: [id])
-  propertyId             Int?
-}
-
-model Hostel {
-  id                     Int       @id @default(autoincrement())
-  title                  String
-  description            String
-  location               String
-  price                  String
-  Availability           String
-  contact                String
-  photos                 String
-  thumbnail              String
-  roommates_Restrictions String
-  termsAndCondition      String
-  additionalAmenities    String
-  featured               Boolean   @default(false)
-  date                   DateTime  @default(now())
-  Property               Property? @relation(fields: [propertyId], references: [id])
-  propertyId             Int?
-}
-
-model Hotel {
-  id                     Int       @id @default(autoincrement())
-  title                  String
-  description            String
-  location               String
-  price                  String
-  Availability           String
-  contact                String
-  photos                 String
-  thumbnail              String
-  roommates_Restrictions String
-  termsAndCondition      String
-  additionalAmenities    String
-  featured               Boolean   @default(false)
-  date                   DateTime  @default(now())
-  Property               Property? @relation(fields: [propertyId], references: [id])
-  propertyId             Int?
-}
-
-model House {
-  id         Int       @id @default(autoincrement())
-  title                  String
-  description            String
-  location               String
-  price                  String
-  Availability           String
-  contact                String
-  photos                 String
-  thumbnail              String
-  roommates_Restrictions String
-  termsAndCondition      String
-  additionalAmenities    String
-  featured               Boolean   @default(false)
-  date                   DateTime  @default(now())
-  Property   Property? @relation(fields: [propertyId], references: [id])
-  propertyId Int?
-}
-
-model Land {
-  id         Int       @id @default(autoincrement())
-  title                  String
-  description            String
-  location               String
-  price                  String
-  Availability           String
-  contact                String
-  photos                 String
-  thumbnail              String
-  roommates_Restrictions String
-  termsAndCondition      String
-  additionalAmenities    String
-  featured               Boolean   @default(false)
-  date                   DateTime  @default(now())
-  Property   Property? @relation(fields: [propertyId], references: [id])
-  propertyId Int?
 }
