@@ -179,56 +179,53 @@ model Property {
 }
 
 model Room {
-  id                     Int       @id @default(autoincrement())
-  title                  String
-  description            String
-  location               String
-  price                  String
-  availability           String
-  contact                String
-  photos                 String
+  id           Int              @id @default(autoincrement())
+  title        String
+  description  String
+  location     String
+  price        String
+  availability String
+  contact      String
   thumbnail              String?
   roommates_Restrictions String
   termsAndCondition      String
   additionalAmenities    String
-  featured               Boolean   @default(false)
-  date                   DateTime  @default(now())
+  featured               Boolean  @default(false)
+  date                   DateTime @default(now())
   type                   Type
-
-  Property               Property? @relation(fields: [propertyId], references: [id])
-  propertyId             Int?
+  photos       PropertyPhotos[]
+  Property   Property? @relation(fields: [propertyId], references: [id])
+  propertyId Int?
 }
 
 model Hostel {
-  id                     Int       @id @default(autoincrement())
-  title                  String
-  description            String
-  location               String
-  price                  String
-  availability           String
-  contact                String
-  photos                 String
+  id           Int              @id @default(autoincrement())
+  title        String
+  description  String
+  location     String
+  price        String
+  availability String
+  contact      String
   thumbnail              String?
   roommates_Restrictions String
   termsAndCondition      String
   additionalAmenities    String
-  featured               Boolean   @default(false)
-  date                   DateTime  @default(now())
+  featured               Boolean  @default(false)
+  date                   DateTime @default(now())
   type                   Type
-
-  Property               Property? @relation(fields: [propertyId], references: [id])
-  propertyId             Int?
+  photos       PropertyPhotos[]
+  Property   Property? @relation(fields: [propertyId], references: [id])
+  propertyId Int?
 }
 
 model Hotel {
-  id                     Int       @id @default(autoincrement())
-  title                  String
-  description            String
-  location               String
-  price                  String
-  availability           String
-  contact                String
-  photos                 String
+  id           Int              @id @default(autoincrement())
+  title        String
+  description  String
+  location     String
+  price        String
+  availability String
+  contact      String
   thumbnail              String?
   roommates_Restrictions String
   termsAndCondition      String
@@ -236,50 +233,64 @@ model Hotel {
   featured               Boolean   @default(false)
   date                   DateTime  @default(now())
   type                   Type
+  photos       PropertyPhotos[]
   Property               Property? @relation(fields: [propertyId], references: [id])
   propertyId             Int?
 }
 
 model House {
-  id                     Int       @id @default(autoincrement())
-  title                  String
-  description            String
-  location               String
-  price                  String
-  availability           String
-  contact                String
-  photos                 String
+  id           Int              @id @default(autoincrement())
+  title        String
+  description  String
+  location     String
+  price        String
+  availability String
+  contact      String
   thumbnail              String?
   roommates_Restrictions String
   termsAndCondition      String
   additionalAmenities    String
-  featured               Boolean   @default(false)
-  date                   DateTime  @default(now())
+  featured               Boolean  @default(false)
+  date                   DateTime @default(now())
   type                   Type
-
-  Property               Property? @relation(fields: [propertyId], references: [id])
-  propertyId             Int?
+  photos       PropertyPhotos[]
+  Property   Property? @relation(fields: [propertyId], references: [id])
+  propertyId Int?
 }
 
 model Land {
-  id                     Int       @id @default(autoincrement())
+  id                     Int              @id @default(autoincrement())
   title                  String
   description            String
   location               String
   price                  String
   availability           String
   contact                String
-  photos                 String
   thumbnail              String?
   roommates_Restrictions String
   termsAndCondition      String
   additionalAmenities    String
-  featured               Boolean   @default(false)
-  date                   DateTime  @default(now())
+  featured               Boolean          @default(false)
+  date                   DateTime         @default(now())
   type                   Type
+  photos                 PropertyPhotos[]
+  Property   Property? @relation(fields: [propertyId], references: [id])
+  propertyId Int?
+}
 
-  Property               Property? @relation(fields: [propertyId], references: [id])
-  propertyId             Int?
+model PropertyPhotos {
+  id       Int     @id @default(autoincrement())
+  photo    String
+  Land     Land?   @relation(fields: [landId], references: [id])
+  landId   Int?
+  Room     Room?   @relation(fields: [roomId], references: [id])
+  roomId   Int?
+  Hostel   Hostel? @relation(fields: [hostelId], references: [id])
+  hostelId Int?
+  Hotel    Hotel?  @relation(fields: [hotelId], references: [id])
+  hotelId  Int?
+  House    House?  @relation(fields: [houseId], references: [id])
+  houseId  Int?
 }
 
 enum Type {
