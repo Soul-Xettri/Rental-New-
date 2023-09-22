@@ -62,7 +62,7 @@ const useStyles = createStyles((theme) => ({
     padding: `${rem(8)} ${rem(12)}`,
     borderRadius: 0,
     textDecoration: "none",
-    color: theme.white,
+    color: theme.colorScheme === "dark" ? theme.white : theme.black,
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
