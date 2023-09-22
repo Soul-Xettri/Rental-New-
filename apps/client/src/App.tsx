@@ -15,6 +15,7 @@ import {
 } from "@mantine/core";
 import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 import { Footer } from "./components/Navbar/Footer";
+import BuyPage from "./components/Buy Page/BuyPage";
 const queryClient = new QueryClient();
 
 function App() {
@@ -62,6 +63,9 @@ function App() {
                     path="/auth/forgot-password"
                     element={<ForgotPassword />}
                   />
+                  <Route path="/buy">
+                    <Route index element={<BuyPage/>}/>
+                  </Route>
                   <Route path="*" element={<Error404 />} />
                 </Routes>
                 <Footer
