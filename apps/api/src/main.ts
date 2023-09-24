@@ -25,7 +25,7 @@ async function bootstrap() {
     preflightContinue: false,
     optionsSuccessStatus: 204,
     credentials: true,
-    origin: ['http://localhost:5173'],
+    origin: ['http://localhost:5173','http://localhost:5174'],
   };
   app.enableCors(corsOptions);
   app.use(cookieParser());
