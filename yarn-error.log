@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Soul\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+  C:\Program Files\nodejs\node.exe C:\Users\Soul\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js upgrade --latest
 
 PATH: 
-  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\Soul\AppData\Local\Microsoft\WindowsApps;;C:\Users\Soul\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Soul\AppData\Roaming\npm
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\ProgramData\ComposerSetup\bin;C:\wamp64\bin\php\php8.2.0;C:\Users\Soul\AppData\Local\Microsoft\WindowsApps;;C:\Users\Soul\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Soul\AppData\Roaming\npm;C:\Users\Soul\AppData\Roaming\Composer\vendor\bin
 
 Yarn version: 
   1.22.19
@@ -14,16 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@tabler/icons-react/-/icons-react-2.20.0.tgz: ESOCKETTIMEDOUT
-      at ClientRequest.<anonymous> (C:\Users\Soul\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141517:19)
-      at Object.onceWrapper (node:events:627:28)
-      at ClientRequest.emit (node:events:513:28)
-      at TLSSocket.emitRequestTimeout (node:_http_client:848:9)
-      at Object.onceWrapper (node:events:627:28)
-      at TLSSocket.emit (node:events:525:35)
-      at Socket._onTimeout (node:net:570:8)
-      at listOnTimeout (node:internal/timers:569:17)
-      at process.processTimers (node:internal/timers:512:7)
+  Error: EPERM: operation not permitted, unlink 'D:\Rental-New-\node_modules\@esbuild\win32-x64\esbuild.exe'
 
 npm manifest: 
   {
