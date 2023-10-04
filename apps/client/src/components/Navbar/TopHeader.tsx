@@ -155,7 +155,7 @@ const useStyles = createStyles((theme) => ({
     },
   },
   user: {
-    color: theme.white,
+    color: theme.colorScheme === "dark" ? theme.white : theme.black,
     padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
     borderRadius: theme.radius.sm,
     transition: "background-color 100ms ease",
