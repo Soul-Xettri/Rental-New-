@@ -64,6 +64,7 @@
 button.mantine-UnstyledButton-root.mantine-Carousel-control.mantine-1u58w9r {
   opacity: 1;
   background-color: #1a2d3f;
+  border: #1a2d3f;
 }
 
 button.mantine-UnstyledButton-root.mantine-Carousel-control.mantine-1u58w9r
@@ -71,6 +72,15 @@ button.mantine-UnstyledButton-root.mantine-Carousel-control.mantine-1u58w9r
   opacity: 1;
   color: #228be6;
 }
+button.mantine-UnstyledButton-root.mantine-Carousel-control.mantine-196hud6 {
+  background-color: #1a2d3f;
+  border: #1a2d3f;
+}
+button.mantine-UnstyledButton-root.mantine-Carousel-control.mantine-196hud6
+  svg {
+  color: #228be6;
+}
+
 .mantine-19swgkw.mantine-Carousel-indicators {
   bottom: -2.6rem;
 }

@@ -1,22 +1,65 @@
-import { Carousel } from "@mantine/carousel";
+import { Carousel, Embla } from "@mantine/carousel";
 import { IconAdjustments, IconCoffee, IconMountain } from "@tabler/icons-react";
-import { GiFarmTractor, GiGrandPiano, GiIndianPalace } from "react-icons/gi";
-import { FaSkiing } from "react-icons/fa";
+import {
+  GiFarmTractor,
+  GiGrandPiano,
+  GiIndianPalace,
+  GiMountainCave,
+  GiCampingTent,
+  GiTreehouse,
+  GiIsland,
+  GiFamilyHouse,
+  GiWoodCabin,
+  GiVillage,
+  GiPisaTower,
+  GiGrapes,
+  GiShepherdsCrook,
+  GiWatchtower,
+  GiBarn,
+  GiBaseDome,
+  GiBowlingPin,
+} from "react-icons/gi";
+import { FaSkiing, FaUmbrellaBeach } from "react-icons/fa";
 import {
   Button,
   Container,
+  Progress,
   SimpleGrid,
   Switch,
   createStyles,
   em,
   rem,
 } from "@mantine/core";
-import { MdOutlineHouseboat, MdOutlineHouse } from "react-icons/md";
+import {
+  MdOutlineHouseboat,
+  MdOutlineHouse,
+  MdSportsGolf,
+  MdSurfing,
+  MdOutlineBedroomParent,
+  MdOutlineHomeWork,
+  MdOutlineTempleBuddhist,
+  MdHouseSiding,
+  MdTempleBuddhist,
+} from "react-icons/md";
 import { GoContainer } from "react-icons/go";
 import { IoIosColorPalette } from "react-icons/io";
-import { BsFire } from "react-icons/bs";
+import { BsBox2, BsFire, BsSnow } from "react-icons/bs";
 import { MdOutlineDinnerDining } from "react-icons/md";
-import { TbUfo } from "react-icons/tb";
+import { TbUfo, TbTent, TbWindmill, TbSitemap } from "react-icons/tb";
+import { CgHomeAlt } from "react-icons/cg";
+import {
+  PiCactus,
+  PiCastleTurretBold,
+  PiHouseLine,
+  PiWarehouseThin,
+} from "react-icons/pi";
+import { LiaMountainSolid, LiaSwimmingPoolSolid } from "react-icons/lia";
+import { CiMountain1 } from "react-icons/ci";
+import { LuPalmtree, LuCastle, LuChefHat, LuSailboat } from "react-icons/lu";
+import { TbCamper } from "react-icons/tb";
+import { VscKey } from "react-icons/vsc";
+import { HiOutlineViewGridAdd } from "react-icons/hi";
+import { useCallback, useEffect, useState } from "react";
 
 const useStyles = createStyles((theme) => ({
   Contenttop: {
@@ -36,6 +79,7 @@ const useStyles = createStyles((theme) => ({
       flexDirection: "column",
     },
   },
+
   headerbg: {
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -78,6 +122,21 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 export default function SecondTopHeader() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [embla, setEmbla] = useState<Embla | null>(null);
+
+  const handleScroll = useCallback(() => {
+    if (!embla) return;
+    const progress = Math.max(0, Math.min(1, embla.scrollProgress()));
+    setScrollProgress(progress * 100);
+  }, [embla, setScrollProgress]);
+
+  useEffect(() => {
+    if (embla) {
+      embla.on("scroll", handleScroll);
+      handleScroll();
+    }
+  }, [embla]);
   let buttonSearch = " buttonSearchDark";
 
   if (document.body.style.backgroundColor === "white") {
@@ -87,7 +146,7 @@ export default function SecondTopHeader() {
   return (
     <Container
       size="lg"
-      style={{ display: "flex", flexDirection: "row", maxWidth: "90%" }}
+      style={{ display: "flex", flexDirection: "row", maxWidth: "70%" }}
     >
       <div className={classes.inner} style={{ width: "100%" }}>
         <div className={classes.Contenttop} style={{ paddingTop: "0px" }}>
@@ -96,6 +155,7 @@ export default function SecondTopHeader() {
             slideGap="lg"
             align="start"
             slidesToScroll={1}
+            getEmblaApi={setEmbla}
             styles={{
               control: {
                 "&[data-inactive]": {
@@ -104,85 +164,803 @@ export default function SecondTopHeader() {
                 },
               },
             }}
-            style={{ paddingRight: "20px", paddingLeft: "60px" }}
+            style={{ paddingRight: "45px", paddingLeft: "30px" }}
+            dragFree
           >
             <Carousel.Slide>
-              <SimpleGrid cols={9} style={{
-                    height: "max-content",                   
-                  }}>
+              <SimpleGrid cols={9} style={{}}>
                 <div
                   style={{
-                    height: "max-content",
-                    width: "max-content",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
                   }}
                 >
-                  <IconCoffee style={{ width: "30%", height: "10%" }} />
+                  <IconCoffee style={{ width: "25%", height: "10%" }} />
                   <span style={{ fontSize: "12px" }}>Bed & breakfasts</span>
                 </div>
-                <div>
-                  <IconMountain style={{ width: "30%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Bed & breakfasts</span>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiFarmTractor style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Farms</span>
                 </div>
-                <div>
-                  <GiFarmTractor style={{ width: "30%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Bed & breakfasts</span>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <IconMountain style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>National parks</span>
                 </div>
-                <div>
-                  <FaSkiing style={{ width: "30%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Bed & breakfasts</span>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <MdOutlineHouseboat style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Lakefront</span>
                 </div>
-                <div>
-                  <BsFire style={{ width: "30%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Bed & breakfasts</span>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <BsFire style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Trends</span>
                 </div>
-                <div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
                   <MdOutlineDinnerDining
-                    style={{  width: "30%", height: "10%"  }}
+                    style={{ width: "25%", height: "10%" }}
                   />
-                  <span style={{ fontSize: "12px" }}>Bed & breakfasts</span>
+                  <span style={{ fontSize: "12px" }}>Luxe</span>
                 </div>
-                <div>
-                  <GiIndianPalace style={{  width: "30%", height: "10%"  }} />
-                  <span style={{ fontSize: "12px" }}>Bed & breakfasts</span>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiIndianPalace style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Raids</span>
                 </div>
-                <div>
-                  <MdOutlineHouse style={{  width: "30%", height: "10%"  }} />
-                  <span style={{ fontSize: "12px" }}>Bed & breakfasts</span>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <MdOutlineHouse style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Historical homes</span>
                 </div>
-                <div>
-                  <TbUfo style={{  width: "30%", height: "10%"  }} />
-                  <span style={{ fontSize: "12px" }}>Bed & breakfasts</span>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <TbUfo style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>OMG!</span>
                 </div>
               </SimpleGrid>
             </Carousel.Slide>
-            <Carousel.Slide>2</Carousel.Slide>
-            <Carousel.Slide>3</Carousel.Slide>
-            <Carousel.Slide>4</Carousel.Slide>
-            <Carousel.Slide>5</Carousel.Slide>
-            <Carousel.Slide>6</Carousel.Slide>
-            <Carousel.Slide>7</Carousel.Slide>
-            <Carousel.Slide>8</Carousel.Slide>
-            <Carousel.Slide>9</Carousel.Slide>
             <Carousel.Slide>
-              <SimpleGrid cols={9}>
-                <div>
-                  <MdOutlineHouseboat />
+              <SimpleGrid cols={9} style={{}}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <CgHomeAlt style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Earth homes</span>
                 </div>
-                <div>
-                  <GoContainer />
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <MdSportsGolf style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Golfing</span>
                 </div>
-                <div>
-                  <IoIosColorPalette />
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiMountainCave style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Caves</span>
                 </div>
-                <div>
-                  <GiGrandPiano />
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <MdSurfing style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Surfing</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <MdOutlineBedroomParent
+                    style={{ width: "25%", height: "10%" }}
+                  />
+                  <span style={{ fontSize: "12px" }}>Rooms</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <PiWarehouseThin style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Tiny homes</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiCampingTent style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Camping</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiIsland style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Islands</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiTreehouse style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Treehouses</span>
+                </div>
+              </SimpleGrid>
+            </Carousel.Slide>
+            <Carousel.Slide>
+              <SimpleGrid cols={9} style={{}}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiFamilyHouse style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Mansions</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <BsSnow style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Arctic</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <LiaMountainSolid style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Amazing views</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <MdSurfing style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Surfing</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiWoodCabin style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Cabins</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiVillage style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Countryside</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <FaUmbrellaBeach style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Beach</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <MdOutlineHouseboat style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Beachfront</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiPisaTower style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Iconic cities</span>
+                </div>
+              </SimpleGrid>
+            </Carousel.Slide>
+            <Carousel.Slide>
+              <SimpleGrid cols={9} style={{}}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <LiaSwimmingPoolSolid
+                    style={{ width: "25%", height: "10%" }}
+                  />
+                  <span style={{ fontSize: "12px" }}>Amazing pools</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <MdOutlineHouseboat style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Lake</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <CiMountain1 style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Top of the world</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <LuPalmtree style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Tropical</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <TbCamper style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Campers</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <MdOutlineHomeWork style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Design</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <VscKey style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>New</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <TbTent style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>A-frames</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <FaSkiing style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Skiing </span>
+                </div>
+              </SimpleGrid>
+            </Carousel.Slide>
+            <Carousel.Slide>
+              <SimpleGrid cols={9} style={{}}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <LuCastle style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Castles</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <MdOutlineTempleBuddhist
+                    style={{ width: "25%", height: "10%" }}
+                  />
+                  <span style={{ fontSize: "12px" }}>Hanoks</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiGrapes style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Vineyards</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <BsBox2 style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Cycladic homes</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <TbWindmill style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Windmills</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <LuChefHat style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Chef's kitchens</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiShepherdsCrook style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>New</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <PiCastleTurretBold style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Casas particulares</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiWatchtower style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Towers</span>
+                </div>
+                
+              </SimpleGrid>
+            </Carousel.Slide>
+            <Carousel.Slide>
+              <SimpleGrid cols={9} style={{}}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <PiCactus style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Desert</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiBarn style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Barns</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <MdHouseSiding style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Minsus</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiBaseDome style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Domes</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <MdTempleBuddhist style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Ryokans</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiWoodCabin style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Yurts</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <LuSailboat style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Boats</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiBowlingPin style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Play</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <TbSitemap style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Adapted</span>
+                </div>
+              </SimpleGrid>
+            </Carousel.Slide>
+            <Carousel.Slide>
+              <SimpleGrid cols={9} style={{}}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <HiOutlineViewGridAdd
+                    style={{ width: "25%", height: "10%" }}
+                  />
+                  <span style={{ fontSize: "12px" }}>Off-the-grid</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <FaSkiing style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Ski-in/out</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <MdOutlineHouseboat style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Houseboats</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GoContainer style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Containers</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <IoIosColorPalette style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Creative spaces</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiGrandPiano style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Grand pianos</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <PiHouseLine style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Trulli</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "max-content",
+                    width: "95px",
+                  }}
+                >
+                  <GiWoodCabin style={{ width: "25%", height: "10%" }} />
+                  <span style={{ fontSize: "12px" }}>Dammusi</span>
                 </div>
               </SimpleGrid>
             </Carousel.Slide>
           </Carousel>
+          <Progress
+            value={scrollProgress}
+            styles={{
+              bar: { transitionDuration: "0ms" },
+              root: { maxWidth: "100%" },
+            }}
+            mt={2}
+            size="xs"
+            style={{marginRight:"30px",marginLeft:"30px"}}
+          />
         </div>
         <div
           style={{ display: "flex", flexDirection: "row", paddingLeft: "10px" }}
@@ -205,7 +983,7 @@ export default function SecondTopHeader() {
               className={`w-full py-2 px-4   ${buttonSearch}`}
             >
               Display total before taxes
-              <Switch size={rem(14)} style={{ marginLeft: "3px" }} />{" "}
+              <Switch size={rem(14)} style={{ marginLeft: "10px" }} />{" "}
             </Button>
           </div>
         </div>
