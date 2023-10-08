@@ -1,4 +1,4 @@
-import { Carousel, Embla } from "@mantine/carousel";
+import { Carousel } from "@mantine/carousel";
 import { IconAdjustments, IconCoffee, IconMountain } from "@tabler/icons-react";
 import {
   GiFarmTractor,
@@ -23,7 +23,6 @@ import { FaSkiing, FaUmbrellaBeach } from "react-icons/fa";
 import {
   Button,
   Container,
-  Progress,
   SimpleGrid,
   Switch,
   createStyles,
@@ -59,7 +58,7 @@ import { LuPalmtree, LuCastle, LuChefHat, LuSailboat } from "react-icons/lu";
 import { TbCamper } from "react-icons/tb";
 import { VscKey } from "react-icons/vsc";
 import { HiOutlineViewGridAdd } from "react-icons/hi";
-import { useCallback, useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   Contenttop: {
@@ -120,42 +119,71 @@ const useStyles = createStyles((theme) => ({
         : "linear-gradient(90deg, #443088 0%, #3454d1 61%, #009fff 100%)",
     marginTop: `calc(${theme.spacing.xl} * 2)`,
   },
+  tabsList: {
+    borderBottom: "0 !important",
+  },
+
+  tab: {
+    fontWeight: 500,
+    height: rem(38),
+    color: theme.white,
+    backgroundColor: "transparent",
+    // borderColor: theme.fn.variant({
+    //   variant: "filled",
+    //   color: theme.primaryColor,
+    // }).background,
+    borderRadius: 0,
+    "&:hover": {
+      backgroundColor: "transparent",
+      borderBottom: 0,
+    },
+
+    "&[data-active]": {
+      backgroundColor: theme.colorScheme === "dark" ? "#1a2d3f" : "#2563eb",
+      borderColor: theme.colorScheme === "dark" ? "#1a2d3f" : "#2563eb",
+      color: theme.colorScheme === "dark" ? "#228be6" : theme.white,
+    },
+  },
 }));
 export default function SecondTopHeader() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [embla, setEmbla] = useState<Embla | null>(null);
+  // const [scrollProgress, setScrollProgress] = useState(0);
+  // const [embla, setEmbla] = useState<Embla | null>(null);
 
-  const handleScroll = useCallback(() => {
-    if (!embla) return;
-    const progress = Math.max(0, Math.min(1, embla.scrollProgress()));
-    setScrollProgress(progress * 100);
-  }, [embla, setScrollProgress]);
+  // const handleScroll = useCallback(() => {
+  //   if (!embla) return;
+  //   const progress = Math.max(0, Math.min(1, embla.scrollProgress()));
+  //   setScrollProgress(progress * 100);
+  // }, [embla, setScrollProgress]);
 
-  useEffect(() => {
-    if (embla) {
-      embla.on("scroll", handleScroll);
-      handleScroll();
-    }
-  }, [embla]);
+  // useEffect(() => {
+  //   if (embla) {
+  //     embla.on("scroll", handleScroll);
+  //     handleScroll();
+  //   }
+  // }, [embla]);
   let buttonSearch = " buttonSearchDark";
 
   if (document.body.style.backgroundColor === "white") {
     buttonSearch = "buttonSearchWhite";
   }
   const { classes } = useStyles();
+  const location = useLocation();
   return (
     <Container
       size="lg"
       style={{ display: "flex", flexDirection: "row", maxWidth: "70%" }}
     >
       <div className={classes.inner} style={{ width: "100%" }}>
-        <div className={classes.Contenttop} style={{ paddingTop: "0px" }}>
+        <div
+          className={classes.Contenttop}
+          style={{ paddingTop: "0px", paddingBottom: "0" }}
+        >
           <Carousel
             slideSize="100%"
             slideGap="lg"
             align="start"
             slidesToScroll={1}
-            getEmblaApi={setEmbla}
+            // getEmblaApi={setEmbla}
             styles={{
               control: {
                 "&[data-inactive]": {
@@ -169,789 +197,2393 @@ export default function SecondTopHeader() {
           >
             <Carousel.Slide>
               <SimpleGrid cols={9} style={{}}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                <NavLink
+                  to="/buy"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <IconCoffee style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Bed & breakfasts</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <IconCoffee
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/buy" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Bed & breakfasts</span>
+                  </div>
+                </NavLink>
+
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiFarmTractor style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Farms</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiFarmTractor
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Farms</span>
+                  </div>
+                </NavLink>
+
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <IconMountain style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>National parks</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <IconMountain
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>National parks</span>
+                  </div>
+                </NavLink>
+
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <MdOutlineHouseboat style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Lakefront</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <MdOutlineHouseboat
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Lakefront</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <BsFire style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Trends</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <BsFire
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Trends</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <MdOutlineDinnerDining
-                    style={{ width: "25%", height: "10%" }}
-                  />
-                  <span style={{ fontSize: "12px" }}>Luxe</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <MdOutlineDinnerDining
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Luxe</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiIndianPalace style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Raids</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiIndianPalace
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Raids</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <MdOutlineHouse style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Historical homes</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <MdOutlineHouse
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Historical homes</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <TbUfo style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>OMG!</span>
-                </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <TbUfo
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>OMG!</span>
+                  </div>
+                </NavLink>
               </SimpleGrid>
             </Carousel.Slide>
             <Carousel.Slide>
               <SimpleGrid cols={9} style={{}}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <CgHomeAlt style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Earth homes</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <CgHomeAlt
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Earth homes</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <MdSportsGolf style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Golfing</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <MdSportsGolf
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Golfing</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiMountainCave style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Caves</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiMountainCave
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Caves</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <MdSurfing style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Surfing</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <MdSurfing
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Surfing</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <MdOutlineBedroomParent
-                    style={{ width: "25%", height: "10%" }}
-                  />
-                  <span style={{ fontSize: "12px" }}>Rooms</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <MdOutlineBedroomParent
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Rooms</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <PiWarehouseThin style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Tiny homes</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <PiWarehouseThin
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Tiny homes</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiCampingTent style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Camping</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiCampingTent
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Camping</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiIsland style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Islands</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiIsland
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Islands</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiTreehouse style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Treehouses</span>
-                </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiTreehouse
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Treehouses</span>
+                  </div>
+                </NavLink>
               </SimpleGrid>
             </Carousel.Slide>
             <Carousel.Slide>
               <SimpleGrid cols={9} style={{}}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiFamilyHouse style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Mansions</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiFamilyHouse
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Mansions</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <BsSnow style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Arctic</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <BsSnow
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Arctic</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <LiaMountainSolid style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Amazing views</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <LiaMountainSolid
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Amazing views</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <MdSurfing style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Surfing</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <MdSurfing
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Surfing</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiWoodCabin style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Cabins</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiWoodCabin
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Cabins</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiVillage style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Countryside</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiVillage
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Countryside</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <FaUmbrellaBeach style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Beach</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <FaUmbrellaBeach
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Beach</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <MdOutlineHouseboat style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Beachfront</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <MdOutlineHouseboat
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Beachfront</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiPisaTower style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Iconic cities</span>
-                </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiPisaTower
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Iconic cities</span>
+                  </div>
+                </NavLink>
               </SimpleGrid>
             </Carousel.Slide>
             <Carousel.Slide>
               <SimpleGrid cols={9} style={{}}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <LiaSwimmingPoolSolid
-                    style={{ width: "25%", height: "10%" }}
-                  />
-                  <span style={{ fontSize: "12px" }}>Amazing pools</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <LiaSwimmingPoolSolid
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Amazing pools</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <MdOutlineHouseboat style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Lake</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <MdOutlineHouseboat
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Lake</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <CiMountain1 style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Top of the world</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <CiMountain1
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Top of the world</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <LuPalmtree style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Tropical</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <LuPalmtree
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Tropical</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <TbCamper style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Campers</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <TbCamper
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Campers</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <MdOutlineHomeWork style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Design</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <MdOutlineHomeWork
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Design</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <VscKey style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>New</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <VscKey
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>New</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <TbTent style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>A-frames</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <TbTent
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>A-frames</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <FaSkiing style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Skiing </span>
-                </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <FaSkiing
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Skiing </span>
+                  </div>
+                </NavLink>
               </SimpleGrid>
             </Carousel.Slide>
             <Carousel.Slide>
               <SimpleGrid cols={9} style={{}}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <LuCastle style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Castles</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <LuCastle
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Castles</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <MdOutlineTempleBuddhist
-                    style={{ width: "25%", height: "10%" }}
-                  />
-                  <span style={{ fontSize: "12px" }}>Hanoks</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <MdOutlineTempleBuddhist
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Hanoks</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiGrapes style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Vineyards</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiGrapes
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Vineyards</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <BsBox2 style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Cycladic homes</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <BsBox2
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Cycladic homes</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <TbWindmill style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Windmills</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <TbWindmill
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Windmills</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <LuChefHat style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Chef's kitchens</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <LuChefHat
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Chef's kitchens</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiShepherdsCrook style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>New</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiShepherdsCrook
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>New</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <PiCastleTurretBold style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Casas particulares</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiWatchtower
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Towers</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiWatchtower style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Towers</span>
-                </div>
-                
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <PiCastleTurretBold
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Casas particulares</span>
+                  </div>
+                </NavLink>
               </SimpleGrid>
             </Carousel.Slide>
             <Carousel.Slide>
               <SimpleGrid cols={9} style={{}}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <PiCactus style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Desert</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <PiCactus
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Desert</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiBarn style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Barns</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiBarn
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Barns</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <MdHouseSiding style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Minsus</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <MdHouseSiding
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Minsus</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiBaseDome style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Domes</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiBaseDome
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Domes</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <MdTempleBuddhist style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Ryokans</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <MdTempleBuddhist
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Ryokans</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiWoodCabin style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Yurts</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiWoodCabin
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Yurts</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <LuSailboat style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Boats</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <LuSailboat
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Boats</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiBowlingPin style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Play</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiBowlingPin
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Play</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <TbSitemap style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Adapted</span>
-                </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <TbSitemap
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Adapted</span>
+                  </div>
+                </NavLink>
               </SimpleGrid>
             </Carousel.Slide>
             <Carousel.Slide>
               <SimpleGrid cols={9} style={{}}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <HiOutlineViewGridAdd
-                    style={{ width: "25%", height: "10%" }}
-                  />
-                  <span style={{ fontSize: "12px" }}>Off-the-grid</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <HiOutlineViewGridAdd
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Off-the-grid</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <FaSkiing style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Ski-in/out</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <FaSkiing
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Ski-in/out</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <MdOutlineHouseboat style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Houseboats</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <MdOutlineHouseboat
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Houseboats</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GoContainer style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Containers</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GoContainer
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Containers</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <IoIosColorPalette style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Creative spaces</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <IoIosColorPalette
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Creative spaces</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiGrandPiano style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Grand pianos</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiGrandPiano
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Grand pianos</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <PiHouseLine style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Trulli</span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "max-content",
-                    width: "95px",
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <PiHouseLine
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Trulli</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="todo"
+                  style={({ isActive }) => {
+                    return {
+                      // backgroundColor: isActive
+                      //   ? theme.fn.variant({
+                      //       variant: "light",
+                      //       color: theme.primaryColor,
+                      //     }).background
+                      //   : "",
+
+                      borderBottom: isActive
+                        ? "1px solid rgb(34, 139, 230)"
+                        : "",
+                      width: "fit-content",
+                    };
                   }}
                 >
-                  <GiWoodCabin style={{ width: "25%", height: "10%" }} />
-                  <span style={{ fontSize: "12px" }}>Dammusi</span>
-                </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      height: "max-content",
+                      width: "95px",
+                    }}
+                  >
+                    <GiWoodCabin
+                      style={{
+                        width: "25%",
+                        height: "10%",
+                        color:
+                          location.pathname === "/todo" ? "black" : "dimgray",
+                      }}
+                    />
+                    <span style={{ fontSize: "12px" }}>Dammusi</span>
+                  </div>
+                </NavLink>
               </SimpleGrid>
             </Carousel.Slide>
           </Carousel>
-          <Progress
+          {/* <Progress
             value={scrollProgress}
             styles={{
               bar: { transitionDuration: "0ms" },
@@ -960,10 +2592,15 @@ export default function SecondTopHeader() {
             mt={2}
             size="xs"
             style={{marginRight:"30px",marginLeft:"30px"}}
-          />
+          /> */}
         </div>
         <div
-          style={{ display: "flex", flexDirection: "row", paddingLeft: "10px" }}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            paddingLeft: "10px",
+            paddingRight: "30px",
+          }}
         >
           <div style={{ marginRight: "10px" }}>
             <Button
