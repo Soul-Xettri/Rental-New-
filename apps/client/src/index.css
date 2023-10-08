@@ -81,6 +81,15 @@ button.mantine-UnstyledButton-root.mantine-Carousel-control.mantine-196hud6
   color: #228be6;
 }
 
+button.mantine-UnstyledButton-root.mantine-Carousel-control.mantine-evmgux {
+  background-color: #ffffff;
+  border: #ffffff;
+}
+button.mantine-UnstyledButton-root.mantine-Carousel-control.mantine-evmgux
+  svg {
+  color: #343434;
+}
+
 .mantine-19swgkw.mantine-Carousel-indicators {
   bottom: -2.6rem;
 }
@@ -544,4 +553,22 @@ button.mantine-UnstyledButton-root.mantine-Carousel-indicator.mantine-1jkjqkp {
   .buttonctaWhite {
     height: 50px;
   }
+}
+
+.roomCarousel .mantine-19swgkw {
+  bottom: 2rem;
+  gap: 4px;
+}
+
+.roomCarousel .mantine-19swgkw .mantine-1jkjqkp {
+  width: 6px;
+  height: 6px;
+  background-color: #ffffff !important;
+}
+
+.roomCarousel .mantine-19swgkw .mantine-ypy11r {
+  width: 5px;
+  height: 5px;
+  padding: 1px;
+  background-color: #1a2d3f !important;
 }
