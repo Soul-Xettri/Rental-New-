@@ -1,8 +1,8 @@
 import { Container, createStyles, em } from "@mantine/core";
 import { TopHeader } from "../../components/Navbar/TopHeader";
 import PropertyGrid from "./PropertyGrid";
-import SecondTopHeader from "./SecondTopHeader";
-
+import SecondTopHeader from "../Navbar/SecondTopHeader";
+import { BothHeaders } from "../Navbar/BothHeaders";
 const useStyles = createStyles((theme) => ({
   Contenttop: {
     paddingTop: `calc(${theme.spacing.xl} * 2)`,
@@ -66,7 +66,14 @@ export default function BuyPage() {
   const { classes } = useStyles();
   return (
     <>
-      <div style={{ borderBottom: "calc(.0625rem * 1) solid #dee2e6" }}>
+      <BothHeaders
+        user={{
+          name: "Soul-Xettri",
+          image:
+            "https://letsenhance.io/static/22670c45bd29d05692c4c0c1db3c62e7/f90fb/AiArtAfter.jpg",
+        }}
+      />
+      {/* <div style={{ borderBottom: "calc(.0625rem * 1) solid #dee2e6" }}>
         <TopHeader
           user={{
             name: "Soul-Xettri",
@@ -77,8 +84,8 @@ export default function BuyPage() {
       </div>
       <div style={{ paddingTop: "30px", paddingBottom: "5px" }}>
         <SecondTopHeader />
-      </div>
-      <Container size="95%">
+      </div> */}
+      <Container size="95%" pt={"60px"}>
         <div className={classes.inner}>
           <div className={classes.Contenttop} style={{ paddingTop: "25px" }}>
             <PropertyGrid />
