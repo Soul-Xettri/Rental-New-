@@ -195,7 +195,9 @@ const useStyles = createStyles((theme) => ({
     maxHeight: "5rem",
     height: "5rem",
     background: "transparent",
-    borderBottom: 0,
+    borderBottom: `${rem(1)} solid ${
+      theme.colorScheme === "dark" ? "white" : theme.colors.gray[2]
+    }`,
     zIndex: 4,
   },
   navbarFixed: {
@@ -207,10 +209,10 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: theme.colorScheme === "dark" ? "#1A1B1E" : "#fff",
     animation: `${smoothScroll} 1s forwards`,
     borderBottom: `${rem(1)} solid ${
-      theme.colorScheme === "dark" ? "transparent" : theme.colors.gray[2]
+      theme.colorScheme === "dark" ? "white" : theme.colors.gray[2]
     }`,
   },
-  secondNavbar:{
+  secondNavbar: {
     position: "relative",
     maxHeight: "5rem",
     height: "5rem",
@@ -218,14 +220,12 @@ const useStyles = createStyles((theme) => ({
     borderBottom: 0,
     zIndex: 4,
   },
-  secondNavbarFixed:{
+  secondNavbarFixed: {
     maxHeight: "5rem",
     height: "5rem",
     zIndex: 4,
     backgroundColor: theme.colorScheme === "dark" ? "#1A1B1E" : "#fff",
-    borderBottom: `${rem(1)} solid ${
-      theme.colorScheme === "dark" ? "transparent" : theme.colors.gray[2]
-    }`,
+    borderBottom:0
   },
   toggle: {
     "&:hover": {
@@ -680,7 +680,19 @@ export function BothHeaders({ user }: HeaderTabsProps) {
           />
         </Group>
         {/* </div> */}
-        <div style={{ paddingTop: "20px",paddingBottom:"10px",width:"100%",borderTop: "calc(.0625rem * 1) solid #dee2e6" }} className={navbar?classes.secondNavbarFixed:classes.secondNavbar}>
+        <div
+          style={{
+            paddingTop: "20px",
+            paddingBottom: "10px",
+            width: "100%",
+            borderTop: `${rem(1)} solid ${
+              theme.colorScheme === "dark"
+                ? "white"
+                : theme.colors.gray[2]
+            }`,
+          }}
+          className={navbar ? classes.secondNavbarFixed : classes.secondNavbar}
+        >
           <SecondTopHeader />
         </div>
       </Header>

@@ -1,7 +1,5 @@
 import { Container, createStyles, em } from "@mantine/core";
-import { TopHeader } from "../../components/Navbar/TopHeader";
 import PropertyGrid from "./PropertyGrid";
-import SecondTopHeader from "../Navbar/SecondTopHeader";
 import { BothHeaders } from "../Navbar/BothHeaders";
 const useStyles = createStyles((theme) => ({
   Contenttop: {
