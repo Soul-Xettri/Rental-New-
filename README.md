@@ -1,12 +1,12 @@
-# Room-Rental: Full Stack Project
+# Rental: Full Stack Project
 
 <p align="center">
-  Welcome to Room-Rental, a full-stack project developed using Nest, React, and Turbo. This project aims to create a platform where users can buy, rent, and sell rooms, houses, and more, similar to Airbnb. Please note that the project is still in the development stage.
+  Welcome toRental, a full-stack project developed using Nest, React, and Turbo. This project aims to create a platform where users can buy, rent, and sell rooms, houses, and more, similar to Airbnb. Please note that the project is still in the development stage.
 </p>
 
 ## Overview
 
-Room-Rental is a comprehensive solution for managing property listings, facilitating property transactions, and providing a user-friendly experience for both buyers and sellers. The project leverages the Nest.js framework for the backend, React for the frontend, and Turbo as the package manager.
+Rental is a comprehensive solution for managing property listings, facilitating property transactions, and providing a user-friendly experience for both buyers and sellers. The project leverages the Nest.js framework for the backend, React for the frontend, and Turbo as the package manager.
 
 ## Features
 
