@@ -22,7 +22,7 @@ To set up and run the Room-Rental project, follow these steps:
 
 1. **Clone the Repository:**
     ```bash
-    git clone https://github.com/your-username/room-rental.git
+    git clone https://github.com/soul-xettri/room-rental.git
     cd room-rental
     ```
 
