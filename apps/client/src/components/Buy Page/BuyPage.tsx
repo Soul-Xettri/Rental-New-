@@ -1,6 +1,8 @@
 import { Container, createStyles, em } from "@mantine/core";
-import PropertyGrid from "./PropertyGrid";
 import { BothHeaders } from "../Navbar/BothHeaders";
+import BedBreakfast from "./Bed&Breakfast";
+import { Route, Routes } from "react-router-dom";
+import Farms from "./Farms";
 const useStyles = createStyles((theme) => ({
   Contenttop: {
     paddingTop: `calc(${theme.spacing.xl} * 2)`,
@@ -62,6 +64,7 @@ const useStyles = createStyles((theme) => ({
 }));
 export default function BuyPage() {
   const { classes } = useStyles();
+
   return (
     <>
       <BothHeaders
@@ -86,7 +89,15 @@ export default function BuyPage() {
       <Container size="95%" pt={"60px"}>
         <div className={classes.inner}>
           <div className={classes.Contenttop} style={{ paddingTop: "25px" }}>
-            <PropertyGrid />
+            <Routes>
+              <Route path="/">
+                <Route index element={<BedBreakfast />} />
+                <Route path="/bed&breakfast" element={<BedBreakfast/>}/>
+                <Route path="/farms" element={<Farms/>}/>
+              </Route>
+
+              {/* Add more routes for other components as needed */}
+            </Routes>
           </div>
         </div>
       </Container>

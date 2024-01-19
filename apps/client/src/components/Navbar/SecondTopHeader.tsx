@@ -198,7 +198,7 @@ export default function SecondTopHeader() {
             <Carousel.Slide>
               <SimpleGrid cols={9} style={{}}>
                 <NavLink
-                  to="/buy"
+                  to="/buy/bed&breakfast"
                   style={({ isActive }) => {
                     return {
                       // backgroundColor: isActive
@@ -237,7 +237,7 @@ export default function SecondTopHeader() {
                 </NavLink>
 
                 <NavLink
-                  to="todo"
+                  to="farms"
                   style={({ isActive }) => {
                     return {
                       // backgroundColor: isActive
