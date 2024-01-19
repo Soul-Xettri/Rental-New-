@@ -29,9 +29,9 @@ export class UploadsController {
         destination: './uploads',
         filename(req, file, callback) {
           const name = file.originalname.split('.')[0];
-          const fileExtentsion = file.originalname.split('.')[1];
+          const fileExtension = file.originalname.split('.')[1];
           const newFileName =
-            name.split(' ').join('_') + '_' + Date.now() + '.' + fileExtentsion;
+            name.split(' ').join('_') + '_' + Date.now() + '.' + fileExtension;
 
           callback(null, newFileName);
         },
